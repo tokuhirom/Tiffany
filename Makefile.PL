@@ -2,7 +2,7 @@ use inc::Module::Install;
 name 'Tempa';
 all_from 'lib/Tempa.pm';
 
-# requires '';
+requires 'Test::Requires';
 
 
 readme_markdown_from 'lib/Tempa.pm';

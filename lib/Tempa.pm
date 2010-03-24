@@ -3,8 +3,29 @@ use strict;
 use warnings;
 use 5.00800;
 our $VERSION = '0.01';
+use MRO::Compat;
+use Carp;
 
+sub new {
+    my ($class, $path, @args) = @_;
+    if ($path =~ /\.([^.]+)$/) {
+        my $ext = $1;
+        no strict 'refs';
+        for my $klass (@{mro::get_linear_isa($class)}) {
+            my $target = ${"$klass\::_map"}->{$ext};
+            return $target->new($path, @args) if $target;
+        }
+        Carp::croak("Cannot detect file type from file name: $path");
+    } else {
+        Carp::croak("Cannot detect ext. from file name: $path");
+    }
+}
 
+sub register {
+    my ($class, $ext, $klass) = @_;
+    no strict 'refs';
+    ${"$class\::_map"}->{$ext} = $klass;
+}
 
 1;
 __END__
