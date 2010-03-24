@@ -3,8 +3,9 @@ use strict;
 use warnings;
 use 5.00800;
 our $VERSION = '0.01';
-use MRO::Compat;
 use Carp;
+
+our $MAP;
 
 sub new {
     my ($class, $path, @args) = @_;
@@ -26,19 +27,12 @@ sub is_registered {
 
 sub lookup {
     my ($class, $ext) = @_;
-    $ext = lc $ext;
-    no strict 'refs';
-    for my $klass (@{mro::get_linear_isa($class)}) {
-        my $target = ${"$klass\::_map"}->{$ext};
-        return $target if $target;
-    }
-    return undef;
+    return $MAP->{lc $ext};
 }
 
 sub register {
     my ($class, $ext, $klass) = @_;
-    no strict 'refs';
-    ${"$class\::_map"}->{lc $ext} = $klass;
+    $MAP->{lc $ext} = $klass;
 }
 
 1;
