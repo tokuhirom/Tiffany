@@ -10,7 +10,7 @@ our $MAP;
 sub new {
     my ($class, $path, @args) = @_;
     if ($path =~ /\.([^.]+)$/) {
-        if (my $klass = $class->lookup($1)) {
+        if (my $klass = $MAP->{lc $1}) {
             return $klass->new($path, @args);
         } else {
             Carp::croak("Cannot detect file type from file name: $path");
@@ -22,7 +22,7 @@ sub new {
 
 sub is_registered {
     my ($class, $ext) = @_;
-    $class->lookup($ext);
+    return exists $MAP->{lc $ext};
 }
 
 sub lookup {
