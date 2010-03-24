@@ -1,0 +1,19 @@
+package Tempa::Template::Semantic;
+use strict;
+use warnings;
+use parent qw/Tempa::Base/;
+use Template::Semantic;
+use Try::Tiny;
+
+sub render {
+    my ($self, @args) = @_;
+    try {
+        my $ts = Template::Semantic->new(@{$self->{args}});
+        $ts->process( $self->{path}, @args);
+    } catch {
+        $self->errstr($_);
+        return undef;
+    };
+}
+
+1;
