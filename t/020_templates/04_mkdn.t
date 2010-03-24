@@ -21,6 +21,10 @@ Tempa->register('mkdn', 'Tempa::Text::Markdown');
     my $tmpl = Tempa::Text::Markdown->new('t/tmpl/foo.mkdn');
     is $tmpl->render('john'), "<p>Hello, john.</p>\n";
 }
+{
+    my $tmpl = Tempa::Text::Markdown->new(\"Hello, john.");
+    is $tmpl->render('john'), "<p>Hello, john.</p>\n";
+}
 
 done_testing;
 

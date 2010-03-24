@@ -19,5 +19,10 @@ use Tempa;
     is $tmpl->render({name => 'john'}), "Hello, john.\n";
 }
 
+{
+    my $tmpl = Tempa::TT->new(\"Hello, [% name %].");
+    is $tmpl->render({name => 'john'}), "Hello, john.";
+}
+
 done_testing;
 

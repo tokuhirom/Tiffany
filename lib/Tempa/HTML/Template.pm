@@ -8,7 +8,8 @@ use Try::Tiny;
 sub render {
     my ($self, $args) = @_;
     try {
-        my $ht = HTML::Template->new(filename => $self->{stuff}, @{$self->{args}});
+        my $type = ref $self->{stuff} ? 'scalarref' : 'filename';
+        my $ht = HTML::Template->new($type => $self->{stuff}, @{$self->{args}});
         while (my ($k, $v) = each %$args) {
             $ht->param($k => $v);
         }

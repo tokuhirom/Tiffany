@@ -21,6 +21,10 @@ Tempa->register('mt', 'Tempa::Text::MicroTemplate::File');
     my $tmpl = Tempa::Text::MicroTemplate::File->new('t/tmpl/foo.mt');
     is $tmpl->render('john'), "hello, john.\n";
 }
+{
+    my $tmpl = Tempa::Text::MicroTemplate::File->new(\'hello, <?= $_[0] ?>.', 'john');
+    is $tmpl->render('john'), "hello, john.";
+}
 
 done_testing;
 

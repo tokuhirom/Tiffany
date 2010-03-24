@@ -9,6 +9,10 @@ use Tempa::Template::Semantic;
     my $tmpl = Tempa::Template::Semantic->new('t/tmpl/foo.ts');
     is $tmpl->render({'#name' => 'john'}), qq{<html xmlns="http://www.w3.org/1999/xhtml">Hello, <div id="name">john</div>.</html>\n};
 }
+{
+    my $tmpl = Tempa::Template::Semantic->new(\q{<html xmlns="http://www.w3.org/1999/xhtml">Hello, <div id="name">ben</div>.</html>});
+    is $tmpl->render({'#name' => 'john'}), qq{<html xmlns="http://www.w3.org/1999/xhtml">Hello, <div id="name">john</div>.</html>\n};
+}
 
 done_testing;
 

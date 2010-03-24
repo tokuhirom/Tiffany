@@ -12,6 +12,8 @@ sub new {
 
 sub slurp {
     my $self = shift;
+    return ${$self->stuff} if ref $self->stuff;
+
     open my $fh, '<', $self->stuff or do {
         $self->errstr("Cannot open file '@{[ $self->stuff ]}': $!");
         return undef;

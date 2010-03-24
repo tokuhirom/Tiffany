@@ -31,6 +31,19 @@ body {
 }
 ...
 }
+{
+    my $tmpl = Tempa::Text::Sass->new(\<<',,,');
+body
+  background-color: black
+  color: white
+,,,
+    is $tmpl->render('john'), <<'...';
+body {
+  background-color: black;
+  color: white;
+}
+...
+}
 
 done_testing;
 
