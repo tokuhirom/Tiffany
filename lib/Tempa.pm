@@ -9,16 +9,31 @@ use Carp;
 sub new {
     my ($class, $path, @args) = @_;
     if ($path =~ /\.([^.]+)$/) {
-        my $ext = lc($1);
-        no strict 'refs';
-        for my $klass (@{mro::get_linear_isa($class)}) {
-            my $target = ${"$klass\::_map"}->{$ext};
-            return $target->new($path, @args) if $target;
+        if (my $klass = $class->_lookup($1)) {
+            return $klass->new($path, @args);
+        } else {
+            Carp::croak("Cannot detect file type from file name: $path");
         }
-        Carp::croak("Cannot detect file type from file name: $path");
     } else {
         Carp::croak("Cannot detect ext. from file name: $path");
     }
+}
+
+sub is_registered {
+    my ($class, $ext) = @_;
+    $class->_lookup($ext);
+}
+
+# hmm... I want to make this method as public.
+sub _lookup {
+    my ($class, $ext) = @_;
+    $ext = lc $ext;
+    no strict 'refs';
+    for my $klass (@{mro::get_linear_isa($class)}) {
+        my $target = ${"$klass\::_map"}->{$ext};
+        return $target if $target;
+    }
+    return undef;
 }
 
 sub register {
