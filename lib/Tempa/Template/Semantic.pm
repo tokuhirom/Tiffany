@@ -9,7 +9,7 @@ sub render {
     my ($self, @args) = @_;
     try {
         my $ts = Template::Semantic->new(@{$self->{args}});
-        $ts->process( $self->{path}, @args);
+        $ts->process( $self->{stuff}, @args);
     } catch {
         $self->errstr($_);
         return undef;

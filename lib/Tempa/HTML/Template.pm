@@ -8,7 +8,7 @@ use Try::Tiny;
 sub render {
     my ($self, $args) = @_;
     try {
-        my $ht = HTML::Template->new(filename => $self->{path}, @{$self->{args}});
+        my $ht = HTML::Template->new(filename => $self->{stuff}, @{$self->{args}});
         while (my ($k, $v) = each %$args) {
             $ht->param($k => $v);
         }

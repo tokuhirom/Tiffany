@@ -9,7 +9,7 @@ sub render {
     my ($self, @args) = @_;
     my $mtf = Text::MicroTemplate::File->new(@{$self->{args}});
     try {
-        $mtf->render_file($self->path, @args);
+        $mtf->render_file($self->stuff, @args);
     } catch {
         $self->errstr($_);
         return undef;
