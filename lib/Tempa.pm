@@ -9,7 +9,7 @@ use Carp;
 sub new {
     my ($class, $path, @args) = @_;
     if ($path =~ /\.([^.]+)$/) {
-        if (my $klass = $class->_lookup($1)) {
+        if (my $klass = $class->lookup($1)) {
             return $klass->new($path, @args);
         } else {
             Carp::croak("Cannot detect file type from file name: $path");
@@ -21,11 +21,10 @@ sub new {
 
 sub is_registered {
     my ($class, $ext) = @_;
-    $class->_lookup($ext);
+    $class->lookup($ext);
 }
 
-# hmm... I want to make this method as public.
-sub _lookup {
+sub lookup {
     my ($class, $ext) = @_;
     $ext = lc $ext;
     no strict 'refs';
