@@ -3,7 +3,7 @@ use strict;
 use warnings;
 use parent qw/Class::Accessor::Fast/;
 
-__PACKAGE__->mk_accessors(qw/args errstr/);
+__PACKAGE__->mk_accessors(qw/args errstr path/);
 
 sub new {
     my ($class, $path, @args) = @_;

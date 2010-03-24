@@ -2,8 +2,9 @@ use inc::Module::Install;
 name 'Tempa';
 all_from 'lib/Tempa.pm';
 
-requires 'Test::Requires';
-
+test_requires 'Test::Requires';
+requires 'parent';
+requires 'Try::Tiny';
 
 readme_markdown_from 'lib/Tempa.pm';
 tests 't/*.t t/*/*.t t/*/*/*.t t/*/*/*/*.t';
