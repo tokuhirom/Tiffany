@@ -3,9 +3,6 @@ use warnings;
 use Test::Requires 'Template';
 use Test::More;
 use Tempa;
-use Tempa::TT;
-
-Tempa->register('tt', 'Tempa::TT');
 
 {
     my $tmpl = Tempa->new('t/tmpl/foo.tt');

@@ -4,13 +4,23 @@ use warnings;
 use 5.00800;
 our $VERSION = '0.01';
 use Carp;
+use UNIVERSAL::require;
 
-our $MAP;
+our $MAP = {
+    'tt'   => 'Tempa::TT',
+    'mt'   => 'Tempa::Text::MicroTemplate::File',
+    'sass' => 'Tempa::Text::Sass',
+    'haml' => 'Tempa::Text::Haml',
+};
+my %loaded;
 
 sub new {
     my ($class, $path, @args) = @_;
     if ($path =~ /\.([^.]+)$/) {
         if (my $klass = $MAP->{lc $1}) {
+            $loaded{$klass}++ or do {
+                $klass->use or die $@;
+            };
             return $klass->new($path, @args);
         } else {
             Carp::croak("Cannot detect file type from file name: $path");

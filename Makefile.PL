@@ -5,6 +5,7 @@ all_from 'lib/Tempa.pm';
 test_requires 'Test::Requires';
 requires 'parent';
 requires 'Try::Tiny';
+requires 'UNIVERSAL::require';
 
 readme_markdown_from 'lib/Tempa.pm';
 tests 't/*.t t/*/*.t t/*/*/*.t t/*/*/*/*.t';
