@@ -10,4 +10,13 @@ sub new {
     bless {path => $path, args => \@args}, $class;
 }
 
+sub slurp {
+    my $self = shift;
+    open my $fh, '<', $self->path or do {
+        $self->errstr("Cannot open file '@{[ $self->path ]}': $!");
+        return undef;
+    };
+    do { local $/; <$fh> };
+}
+
 1;

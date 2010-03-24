@@ -1,13 +1,14 @@
-package Tempa::Text::Markdown;
+package Tempa::Text::Sass;
 use strict;
 use warnings;
 use parent qw/Tempa::Base/;
-use Text::Markdown;
+use Text::Sass;
 
 sub render {
     my ($self, @args) = @_;
     if (defined (my $src = $self->slurp)) {
-        return Text::Markdown->new(@{ $self->args })->markdown($src);
+        my $sass = Text::Sass->new();
+        return $sass->sass2css($src);
     } else {
         return undef;
     }
