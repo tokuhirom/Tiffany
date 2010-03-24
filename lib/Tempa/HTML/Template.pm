@@ -1,13 +1,9 @@
 package Tempa::HTML::Template;
 use strict;
 use warnings;
+use parent qw/Tempa::Base/;
 use HTML::Template;
 use Try::Tiny;
-
-sub new {
-    my ($class, $path, @args) = @_;
-    bless {path => $path, args => \@args}, $class;
-}
 
 sub render {
     my ($self, $args) = @_;
@@ -18,14 +14,9 @@ sub render {
         }
         return $ht->output();
     } catch {
-        $self->{errstr} = $_;
+        $self->errstr($_);
         return undef;
     };
-}
-
-sub errstr {
-    my ($self) = @_;
-    $self->{errstr};
 }
 
 1;

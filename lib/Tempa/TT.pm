@@ -1,24 +1,15 @@
 package Tempa::TT;
 use strict;
 use warnings;
+use parent qw/Tempa::Base/;
 use Template;
-
-sub new {
-    my ($class, $path, @args) = @_;
-    my $tt = Template->new(@args);
-    bless {path => $path, tt => $tt}, $class;
-}
 
 sub render {
     my ($self, @args) = @_;
-    $self->{tt}->process($self->{path}, @args, \my $out)
-        or return;
+    my $tt = Template->new(@{$self->{args}});
+    $tt->process( $self->{path}, @args, \my $out )
+      or do { $self->errstr( $tt->error ); return };
     $out;
-}
-
-sub errstr {
-    my ($self, ) = @_;
-    $self->{tt}->error;
 }
 
 1;
