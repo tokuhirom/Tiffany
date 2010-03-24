@@ -9,7 +9,7 @@ use Carp;
 sub new {
     my ($class, $path, @args) = @_;
     if ($path =~ /\.([^.]+)$/) {
-        my $ext = $1;
+        my $ext = lc($1);
         no strict 'refs';
         for my $klass (@{mro::get_linear_isa($class)}) {
             my $target = ${"$klass\::_map"}->{$ext};
@@ -24,7 +24,7 @@ sub new {
 sub register {
     my ($class, $ext, $klass) = @_;
     no strict 'refs';
-    ${"$class\::_map"}->{$ext} = $klass;
+    ${"$class\::_map"}->{lc $ext} = $klass;
 }
 
 1;
