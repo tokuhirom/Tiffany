@@ -22,7 +22,7 @@ Tempa->register('mt', 'Tempa::Text::MicroTemplate::File');
     is $tmpl->render('john'), "hello, john.\n";
 }
 {
-    my $tmpl = Tempa::Text::MicroTemplate::File->new(\'hello, <?= $_[0] ?>.', 'john');
+    my $tmpl = Tempa::Text::MicroTemplate::File->new(\'hello, <?= $_[0] ?>.');
     is $tmpl->render('john'), "hello, john.";
 }
 
