@@ -7,10 +7,11 @@ use Carp;
 use UNIVERSAL::require;
 
 our $MAP = {
-    'tt'   => 'Tempa::TT',
-    'mt'   => 'Tempa::Text::MicroTemplate::File',
-    'sass' => 'Tempa::Text::Sass',
-    'haml' => 'Tempa::Text::Haml',
+    'tt'    => 'Tempa::TT',
+    'mt'    => 'Tempa::Text::MicroTemplate::File',
+    'sass'  => 'Tempa::Text::Sass',
+    'haml'  => 'Tempa::Text::Haml',
+    'mason' => 'Tempa::Text::MicroMason',
 };
 my %loaded;
 
