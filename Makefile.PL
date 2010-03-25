@@ -6,6 +6,7 @@ test_requires 'Test::Requires';
 requires 'parent';
 requires 'Try::Tiny';
 requires 'UNIVERSAL::require';
+requires 'Class::Accessor::Fast';
 
 readme_markdown_from 'lib/Tempa.pm';
 tests 't/*.t t/*/*.t t/*/*/*.t t/*/*/*/*.t';

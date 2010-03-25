@@ -21,4 +21,6 @@ sub slurp {
     do { local $/; <$fh> };
 }
 
+sub render { die "This is abstract method. Do not use Tempa::Base directly." }
+
 1;

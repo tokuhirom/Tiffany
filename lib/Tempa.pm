@@ -53,21 +53,131 @@ __END__
 
 =head1 NAME
 
-Tempa -
+Tempa - Generic interface for Perl5 template engines.
 
 =head1 SYNOPSIS
 
-  use Tempa;
+    use Tempa;
+
+    my $tmpl = Tempa->new('/path/to/template.tt');
+    $tmpl->render({name => 'John'}); # => string
 
 =head1 DESCRIPTION
 
-Tempa is
+Tempa is generic interface for Perl5 template engines.
+
+=head1 METHODS
+
+=over 4
+
+=item my $tmpl = Tempa->new($path[, @args]);
+
+This method is factory method for Tempa::* classes.
+
+Destination class is determined by $path's extension.
+For example, you passed $path as 'foo.tt', then you got instance of Tempa::TT.
+
+=item Tempa->register($ext, $class);
+
+This method associates a filename pattern with a specific template implementation. To use TT for files ending in a .foo extension:
+
+    Tempa->register('bar', 'Tempa::TT');
+
+=item Tempa->is_registered($ext)
+
+You can check the $ext as registered or not.
+
+=item my $klass = Tempa->lookup($ext);
+
+Lookup template engine from $ext.
+
+=back
+
+=head1 Template Engine Class
+
+=over 4
+
+=item $tmpl->render(@args);
+
+This method rendering template with @args.
+
+If got error, this method returns 'undef'.This method never die if got parse error.
+
+=item $tmpl->errstr();
+
+Get error string for last rendering.
+
+=back
+
+=head1 How to create new tempa engine.
+
+Tempa's class can use L<Tempa::Base> as abstract base class.
+
+Tempa::Base provides following methods.
+
+=over 4
+
+=item my $tmpl = Tempa::Base->new($stuff, @args);
+
+Create new instance of tempa engine.
+
+$sutff should allows Str for filename and ScalarRef for text.
+
+=item $tmpl->args();
+
+This method returns @args of Tempa::Base->new($stuff, @args).
+
+This method is provided for author of Tempa::*.
+
+=item $tmpl->stuff();
+
+This method returns $stuff of Tempa::Base->new($stuff, @args).
+
+This method is provided for author of Tempa::*.
+
+=item $tmpl->slurp();
+
+This method reads content from $tmpl->stuff().
+This method makes plain string both ScalarRef and Str.
+
+This method is provided for author of Tempa::*.
+
+=back
+
+Then, you can create new template wrapper with L<Tempa::Base>.
+
+You should implement only one abstract method named B<render>.
+
+For example, you can write TT bidingigs as following:
+
+    package Tempa::TT;
+    use strict;
+    use warnings;
+    use parent qw/Tempa::Base/;
+    use Template;
+
+    sub render {
+        my ($self, @args) = @_;
+        my $tt = Template->new(@{$self->{args}});
+        $tt->process( $self->{stuff}, @args, \my $out )
+            or do { $self->errstr( $tt->error ); return };
+        $out;
+    }
+
+    1;
+
+B<process> method MUST not throw any exceptions from template engine.
+If the template engine raise exception, you should catch the exeception and set it to $self->errstr and return undef.
+
+=item
 
 =head1 AUTHOR
 
 Tokuhiro Matsuno E<lt>tokuhirom AAJKLFJEF GMAIL COME<gt>
 
 =head1 SEE ALSO
+
+L<Any::Template>, L<http://github.com/rtomayko/tilt>
 
 =head1 LICENSE
 
