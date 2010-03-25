@@ -169,8 +169,6 @@ For example, you can write TT bidingigs as following:
 B<process> method MUST not throw any exceptions from template engine.
 If the template engine raise exception, you should catch the exeception and set it to $self->errstr and return undef.
 
-=item
-
 =head1 AUTHOR
 
 Tokuhiro Matsuno E<lt>tokuhirom AAJKLFJEF GMAIL COME<gt>
