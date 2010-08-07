@@ -57,7 +57,7 @@ sub render {
     my ($self, $path, @args) = @_;
 
     my $tfall = "Tfall::$view_class"->new(@view_opt);
-    my $html = $tfall->render($path, @args) or die $tfall->errstr;
+    my $html = $tfall->render($path, @args);
     $self->res->header('Content-Length' => length($html));
     $self->res->body($html);
 }

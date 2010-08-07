@@ -109,10 +109,6 @@ This method rendering template with @args.
 
 If got error, this method returns 'undef'.This method never die if got parse error.
 
-=item $tmpl->errstr();
-
-Get error string for last rendering.
-
 =back
 
 =head1 How to create new tfall engine.
@@ -143,7 +139,7 @@ For example, you can write TT bindings as following:
         my ($self, @args) = @_;
         my $tt = Template->new(@{$self->{args}});
         $tt->process( $self->{stuff}, @args, \my $out )
-            or do { $self->errstr( $tt->error ); return };
+            or die $tt->error;
         $out;
     }
 

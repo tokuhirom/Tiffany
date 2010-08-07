@@ -16,7 +16,7 @@ sub render {
     my ($self, $stuff, @args) = @_;
 
     $self->{tt}->process( $stuff, @args, \my $out )
-      or do { $self->errstr( $self->{tt}->error ); return };
+      or die $self->{tt}->error;
     $out;
 }
 
