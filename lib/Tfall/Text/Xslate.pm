@@ -13,9 +13,13 @@ sub new {
 }
 
 sub render {
-    my ($self, @args) = @_;
+    my ($self, $stuff, @args) = @_;
 
-    return $self->{xslate}->render(@args);
+    if (ref $stuff) {
+        return $self->{xslate}->render_string($$stuff, @args);
+    } else {
+        return $self->{xslate}->render($stuff, @args);
+    }
 }
 
 1;
