@@ -37,11 +37,6 @@ sub render {
     return $self->{tmpl}->render($self->{path}, @args);
 }
 
-sub errstr {
-    my ($self) = @_;
-    $self->{tmpl}->errstr;
-}
-
 sub is_registered {
     my ($class, $ext) = @_;
     return exists $MAP->{lc $ext};
