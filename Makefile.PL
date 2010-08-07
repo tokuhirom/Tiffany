@@ -8,6 +8,8 @@ requires 'Try::Tiny';
 requires 'UNIVERSAL::require';
 requires 'Class::Accessor::Fast';
 
+no_index directory => 'eg';
+
 readme_markdown_from 'lib/Tfall.pm';
 tests 't/*.t t/*/*.t t/*/*/*.t t/*/*/*/*.t';
 test_requires 'Test::More';
