@@ -1,5 +1,9 @@
 Revision history for Perl extension Tfall
 
+0.01_04
+
+        - any ->render method MUST return plain string
+
 0.01_03
 
         - support Text::MicroTemplate::Extended

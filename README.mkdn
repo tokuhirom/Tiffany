@@ -38,6 +38,8 @@ If the template engine throws any exceptions, Tfall module SHOULD pass through.
 
 __$stuff__ SHOULD allows Str for filename. And the module MAY allows ScalarRef for text.
 
+This method MUST return plain string. Do not return blessed reference.
+
 # HOW TO USE IT IN MY WEB APPLICATION FRAMEWORK?
 
 Example code is here: eg/sinatraish/.
