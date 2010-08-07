@@ -3,54 +3,6 @@ use strict;
 use warnings;
 use 5.00800;
 our $VERSION = '0.01';
-use Carp ();
-use UNIVERSAL::require;
-
-our $MAP = {
-    'tt'    => 'Tfall::TT',
-    'mt'    => 'Tfall::Text::MicroTemplate::File',
-    'sass'  => 'Tfall::Text::Sass',
-    'haml'  => 'Tfall::Text::Haml',
-    'mason' => 'Tfall::Text::MicroMason',
-};
-my %loaded;
-
-sub new {
-    my ($class, $path, @args) = @_;
-    if ($path =~ /\.([^.]+)$/) {
-        if (my $klass = $MAP->{lc $1}) {
-            $loaded{$klass}++ or do {
-                $klass->use or die $@;
-            };
-            my $tmpl = $klass->new(@args);
-            return bless { tmpl => $tmpl, path => $path}, $class;
-        } else {
-            Carp::croak("Cannot detect file type from file name: $path");
-        }
-    } else {
-        Carp::croak("Cannot detect ext. from file name: $path");
-    }
-}
-
-sub render {
-    my ($self, @args) = @_;
-    return $self->{tmpl}->render($self->{path}, @args);
-}
-
-sub is_registered {
-    my ($class, $ext) = @_;
-    return exists $MAP->{lc $ext};
-}
-
-sub lookup {
-    my ($class, $ext) = @_;
-    return $MAP->{lc $ext};
-}
-
-sub register {
-    my ($class, $ext, $klass) = @_;
-    $MAP->{lc $ext} = $klass;
-}
 
 1;
 __END__
@@ -63,10 +15,11 @@ Tfall - Generic interface for Perl5 template engines.
 
 =head1 SYNOPSIS
 
-    use Tfall;
+    use Tfall::Text::Xslate;
 
-    my $tmpl = Tfall->new('/path/to/template.tt');
-    $tmpl->render({name => 'John'}); # => string
+    my $tmpl = Tfall::Text::Xslate->new();
+    $tmpl->render(\'Hello, <: $name :>', {name => 'John'});
+    # => "Hello, John"
 
 =head1 DESCRIPTION
 

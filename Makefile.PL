@@ -3,7 +3,6 @@ name 'Tfall';
 all_from 'lib/Tfall.pm';
 
 test_requires 'Test::Requires';
-requires 'UNIVERSAL::require';
 
 no_index directory => 'eg';
 
