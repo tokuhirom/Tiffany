@@ -14,48 +14,29 @@ Tfall - Generic interface for Perl5 template engines.
 
 Tfall is generic interface for Perl5 template engines.
 
-# Template Engine Class
+# The Tfall Protocol
 
-- Tfall::Thing->new(@args);
+The Tfall protocol is based on duck typing.
+
+- my $tfall = Tfall::Thing->new(@args);
+
+The module SHOULD have __new__ method.
+
+This method creates new instance of Tfall module.
+
+@args should pass to the constructor of template engine.
 
 - $tmpl->render($stuff, @args);
 
+The module SHOULD have __render__ method.
+
 This method rendering template with @args.
 
-If got error, this method returns 'undef'.This method never die if got parse error.
+If template engine found any errors, this method MUST throw exception.
 
-# How to create new tfall engine.
+If the template engine throws any exceptions, Tfall module SHOULD pass through.
 
-- my $tmpl = Tfall::Thing->new(@args);
-
-Create new instance of tfall engine.
-
-$sutff should allows Str for filename and ScalarRef for text.
-
-Then, you can create new template wrapper with [Tfall::Base](http://search.cpan.org/perldoc?Tfall::Base).
-
-You should implement only one abstract method named __render__.
-
-For example, you can write TT bindings as following:
-
-    # XXX broken
-    package Tfall::TT;
-    use strict;
-    use warnings;
-    use Template;
-
-    sub render {
-        my ($self, @args) = @_;
-        my $tt = Template->new(@{$self->{args}});
-        $tt->process( $self->{stuff}, @args, \my $out )
-            or die $tt->error;
-        $out;
-    }
-
-    1;
-
-__process__ method MUST not throw any exceptions from template engine.
-If the template engine raise exception, you should catch the exception and set it to $self->errstr and return undef.
+__$stuff__ SHOULD allows Str for filename. And the module MAY allows ScalarRef for text.
 
 # AUTHOR
 

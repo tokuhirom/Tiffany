@@ -25,56 +25,33 @@ Tfall - Generic interface for Perl5 template engines.
 
 Tfall is generic interface for Perl5 template engines.
 
-=head1 Template Engine Class
+=head1 The Tfall Protocol
+
+The Tfall protocol is based on duck typing.
 
 =over 4
 
-=item Tfall::Thing->new(@args);
+=item my $tfall = Tfall::Thing->new(@args);
+
+The module SHOULD have B<new> method.
+
+This method creates new instance of Tfall module.
+
+@args should pass to the constructor of template engine.
 
 =item $tmpl->render($stuff, @args);
 
+The module SHOULD have B<render> method.
+
 This method rendering template with @args.
 
-If got error, this method returns 'undef'.This method never die if got parse error.
+If template engine found any errors, this method MUST throw exception.
+
+If the template engine throws any exceptions, Tfall module SHOULD pass through.
+
+B<$stuff> SHOULD allows Str for filename. And the module MAY allows ScalarRef for text.
 
 =back
-
-=head1 How to create new tfall engine.
-
-=over 4
-
-=item my $tmpl = Tfall::Thing->new(@args);
-
-Create new instance of tfall engine.
-
-$sutff should allows Str for filename and ScalarRef for text.
-
-=back
-
-Then, you can create new template wrapper with L<Tfall::Base>.
-
-You should implement only one abstract method named B<render>.
-
-For example, you can write TT bindings as following:
-
-    # XXX broken
-    package Tfall::TT;
-    use strict;
-    use warnings;
-    use Template;
-
-    sub render {
-        my ($self, @args) = @_;
-        my $tt = Template->new(@{$self->{args}});
-        $tt->process( $self->{stuff}, @args, \my $out )
-            or die $tt->error;
-        $out;
-    }
-
-    1;
-
-B<process> method MUST not throw any exceptions from template engine.
-If the template engine raise exception, you should catch the exception and set it to $self->errstr and return undef.
 
 =head1 AUTHOR
 
