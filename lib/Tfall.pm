@@ -2,7 +2,7 @@ package Tfall;
 use strict;
 use warnings;
 use 5.00800;
-our $VERSION = '0.01';
+our $VERSION = '0.01_01';
 
 1;
 __END__
@@ -52,6 +52,10 @@ If the template engine throws any exceptions, Tfall module SHOULD pass through.
 B<$stuff> SHOULD allows Str for filename. And the module MAY allows ScalarRef for text.
 
 =back
+
+=head1 HOW TO USE IT IN MY WEB APPLICATION FRAMEWORK?
+
+Example code is here: eg/sinatraish/.
 
 =head1 AUTHOR
 
