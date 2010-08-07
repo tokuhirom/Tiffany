@@ -30,3 +30,9 @@ kazeburo
 daisuke
 maki
 TODO
+ScalarRef
+Str
+TT
+foo
+tfall
+tt

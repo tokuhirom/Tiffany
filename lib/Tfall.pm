@@ -122,36 +122,13 @@ Get error string for last rendering.
 
 =head1 How to create new tfall engine.
 
-Tfall's class can use L<Tfall::Base> as abstract base class.
-
-Tfall::Base provides following methods.
-
 =over 4
 
-=item my $tmpl = Tfall::Base->new($stuff, @args);
+=item my $tmpl = Tfall::Base->new(@args);
 
 Create new instance of tfall engine.
 
 $sutff should allows Str for filename and ScalarRef for text.
-
-=item $tmpl->args();
-
-This method returns @args of Tfall::Base->new($stuff, @args).
-
-This method is provided for author of Tfall::*.
-
-=item $tmpl->stuff();
-
-This method returns $stuff of Tfall::Base->new($stuff, @args).
-
-This method is provided for author of Tfall::*.
-
-=item $tmpl->slurp();
-
-This method reads content from $tmpl->stuff().
-This method makes plain string both ScalarRef and Str.
-
-This method is provided for author of Tfall::*.
 
 =back
 
@@ -159,12 +136,12 @@ Then, you can create new template wrapper with L<Tfall::Base>.
 
 You should implement only one abstract method named B<render>.
 
-For example, you can write TT bidingigs as following:
+For example, you can write TT bindings as following:
 
+    # XXX broken
     package Tfall::TT;
     use strict;
     use warnings;
-    use parent qw/Tfall::Base/;
     use Template;
 
     sub render {
@@ -178,7 +155,7 @@ For example, you can write TT bidingigs as following:
     1;
 
 B<process> method MUST not throw any exceptions from template engine.
-If the template engine raise exception, you should catch the exeception and set it to $self->errstr and return undef.
+If the template engine raise exception, you should catch the exception and set it to $self->errstr and return undef.
 
 =head1 AUTHOR
 
