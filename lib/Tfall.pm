@@ -25,38 +25,13 @@ Tfall - Generic interface for Perl5 template engines.
 
 Tfall is generic interface for Perl5 template engines.
 
-=head1 METHODS
-
-=over 4
-
-=item my $tmpl = Tfall->new($path[, @args]);
-
-This method is factory method for Tfall::* classes.
-
-Destination class is determined by $path's extension.
-For example, you passed $path as 'foo.tt', then you got instance of Tfall::TT.
-
-=item Tfall->register($ext, $class);
-
-This method associates a filename pattern with a specific template implementation. To use TT for files ending in a .foo extension:
-
-    Tfall->register('bar', 'Tfall::TT');
-
-=item Tfall->is_registered($ext)
-
-You can check the $ext as registered or not.
-
-=item my $klass = Tfall->lookup($ext);
-
-Lookup template engine from $ext.
-
-=back
-
 =head1 Template Engine Class
 
 =over 4
 
-=item $tmpl->render(@args);
+=item Tfall::Thing->new(@args);
+
+=item $tmpl->render($stuff, @args);
 
 This method rendering template with @args.
 
@@ -68,7 +43,7 @@ If got error, this method returns 'undef'.This method never die if got parse err
 
 =over 4
 
-=item my $tmpl = Tfall::Base->new(@args);
+=item my $tmpl = Tfall::Thing->new(@args);
 
 Create new instance of tfall engine.
 
