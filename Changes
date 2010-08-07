@@ -1,5 +1,11 @@
 Revision history for Perl extension Tfall
 
+0.01_02
+
+        - support T::D(suggested by @c9s)
+        - remove Markdown support
+        - remove Sass support
+
 0.01_01
 
         - first developer release.
