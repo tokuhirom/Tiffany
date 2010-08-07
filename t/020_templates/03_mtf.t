@@ -5,16 +5,10 @@ use Test::More;
 use Tfall;
 use Tfall::Text::MicroTemplate::File;
 
-Tfall->register('mt', 'Tfall::Text::MicroTemplate::File');
-
-{
-    my $tmpl = Tfall->new('t/tmpl/foo.mt');
-    is $tmpl->render('john'), "hello, john.\n";
-}
 {
     eval {
-        my $tmpl = Tfall->new('t/tmpl/unknown.mt');
-        is $tmpl->render('john'), undef;
+        my $tmpl = Tfall::Text::MicroTemplate::File->new();
+        is $tmpl->render('t/tmpl/unknown.mt', 'john'), undef;
     };
     ok $@;
 }

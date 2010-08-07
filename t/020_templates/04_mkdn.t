@@ -5,16 +5,10 @@ use Test::More;
 use Tfall;
 use Tfall::Text::Markdown;
 
-Tfall->register('mkdn', 'Tfall::Text::Markdown');
-
-{
-    my $tmpl = Tfall->new('t/tmpl/foo.mkdn');
-    is $tmpl->render('john'), "<p>Hello, john.</p>\n";
-}
 {
     eval {
-        my $tmpl = Tfall->new('t/tmpl/unknown.mkdn');
-        is $tmpl->render('john'), undef;
+        my $tmpl = Tfall::Text::Markdown->new();
+        $tmpl->render('t/tmpl/unknown.mkdn', 'john');
     };
     ok $@;
 }

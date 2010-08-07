@@ -4,53 +4,29 @@ Tfall - Generic interface for Perl5 template engines.
 
 # SYNOPSIS
 
-    use Tfall;
+    use Tfall::Text::Xslate;
 
-    my $tmpl = Tfall->new('/path/to/template.tt');
-    $tmpl->render({name => 'John'}); # => string
+    my $tmpl = Tfall::Text::Xslate->new();
+    $tmpl->render(\'Hello, <: $name :>', {name => 'John'});
+    # => "Hello, John"
 
 # DESCRIPTION
 
 Tfall is generic interface for Perl5 template engines.
 
-# METHODS
-
-- my $tmpl = Tfall->new($path[, @args]);
-
-This method is factory method for Tfall::* classes.
-
-Destination class is determined by $path's extension.
-For example, you passed $path as 'foo.tt', then you got instance of Tfall::TT.
-
-- Tfall->register($ext, $class);
-
-This method associates a filename pattern with a specific template implementation. To use TT for files ending in a .foo extension:
-
-    Tfall->register('bar', 'Tfall::TT');
-
-- Tfall->is_registered($ext)
-
-You can check the $ext as registered or not.
-
-- my $klass = Tfall->lookup($ext);
-
-Lookup template engine from $ext.
-
 # Template Engine Class
 
-- $tmpl->render(@args);
+- Tfall::Thing->new(@args);
+
+- $tmpl->render($stuff, @args);
 
 This method rendering template with @args.
 
 If got error, this method returns 'undef'.This method never die if got parse error.
 
-- $tmpl->errstr();
-
-Get error string for last rendering.
-
 # How to create new tfall engine.
 
-- my $tmpl = Tfall::Base->new(@args);
+- my $tmpl = Tfall::Thing->new(@args);
 
 Create new instance of tfall engine.
 
@@ -72,7 +48,7 @@ For example, you can write TT bindings as following:
         my ($self, @args) = @_;
         my $tt = Template->new(@{$self->{args}});
         $tt->process( $self->{stuff}, @args, \my $out )
-            or do { $self->errstr( $tt->error ); return };
+            or die $tt->error;
         $out;
     }
 

@@ -2,16 +2,12 @@ use strict;
 use warnings;
 use Test::Requires 'Text::MicroMason';
 use Test::More;
-use Tfall;
+use Tfall::Text::MicroMason;
 
 {
-    my $tmpl = Tfall->new('t/tmpl/foo.mason');
-    is $tmpl->render(name => 'john'), "Hello, john\n";
-}
-{
     eval {
-        my $tmpl = Tfall->new('t/tmpl/unknown.mason');
-        is $tmpl->render(name => 'john'), undef;
+        my $tmpl = Tfall::Text::MicroMason->new();
+        $tmpl->render('t/tmpl/unknown.mason', name => 'john');
     };
     ok $@;
 }

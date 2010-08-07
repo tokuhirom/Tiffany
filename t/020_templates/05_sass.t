@@ -5,21 +5,10 @@ use Test::More;
 use Tfall;
 use Tfall::Text::Sass;
 
-Tfall->register('sass', 'Tfall::Text::Sass');
-
-{
-    my $tmpl = Tfall->new('t/tmpl/foo.sass');
-    is $tmpl->render('john'), <<'...';
-body {
-  background-color: black;
-  color: white;
-}
-...
-}
 {
     eval {
-        my $tmpl = Tfall->new('t/tmpl/unknown.sass');
-        $tmpl->render('john');
+        my $tmpl = Tfall::Text::Sass->new();
+        $tmpl->render('t/tmpl/unknown.sass', 'john');
     };
     ok $@;
 }

@@ -3,15 +3,12 @@ use warnings;
 use Test::Requires 'Template';
 use Test::More;
 use Tfall;
+use Tfall::TT;
 
 {
-    my $tmpl = Tfall->new('t/tmpl/foo.tt');
-    is $tmpl->render({name => 'john'}), "Hello, john.\n";
-}
-{
     eval {
-        my $tmpl = Tfall->new('t/tmpl/unknown.tt');
-        is $tmpl->render({name => 'john'}), undef;
+        my $tmpl = Tfall::TT->new();
+        $tmpl->render('t/tmpl/unknown.tt', {name => 'john'});
     };
     ok $@;
 }
