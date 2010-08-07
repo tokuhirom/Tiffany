@@ -4,6 +4,7 @@ use Test::Requires 'Text::MicroTemplate::Extended';
 use Test::More;
 use Tfall;
 use Tfall::Text::MicroTemplate::Extended;
+use Scalar::Util qw/blessed/;
 
 {
     eval {
@@ -15,7 +16,9 @@ use Tfall::Text::MicroTemplate::Extended;
 
 {
     my $tmpl = Tfall::Text::MicroTemplate::Extended->new(include_path => ['t/tmpl']);
-    is $tmpl->render('foo', 'john'), "hello, john.\n";
+    my $out = $tmpl->render('foo', 'john');
+    is $out, "hello, john.\n";
+    ok !blessed($out);
 }
 
 done_testing;

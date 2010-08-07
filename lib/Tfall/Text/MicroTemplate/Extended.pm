@@ -13,7 +13,7 @@ sub new {
 
 sub render {
     my ($self, $stuff, @args) = @_;
-    return $self->{mtf}->render($stuff, @args);
+    return $self->{mtf}->render($stuff, @args)->as_string;
 }
 
 1;

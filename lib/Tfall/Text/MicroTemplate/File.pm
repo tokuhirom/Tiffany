@@ -17,9 +17,9 @@ sub render {
     my $mtf = $self->{mtf};
     if (ref $stuff) {
         $mtf->parse(${$stuff});
-        $mtf->build()->(@args);
+        $mtf->build()->(@args)->as_string;
     } else {
-        $mtf->render_file($stuff, @args);
+        $mtf->render_file($stuff, @args)->as_string;
     }
 }
 

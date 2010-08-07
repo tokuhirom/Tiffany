@@ -51,6 +51,8 @@ If the template engine throws any exceptions, Tfall module SHOULD pass through.
 
 B<$stuff> SHOULD allows Str for filename. And the module MAY allows ScalarRef for text.
 
+This method MUST return plain string. Do not return blessed reference.
+
 =back
 
 =head1 HOW TO USE IT IN MY WEB APPLICATION FRAMEWORK?
