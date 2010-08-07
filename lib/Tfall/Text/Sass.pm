@@ -1,7 +1,7 @@
-package Tempa::Text::Sass;
+package Tfall::Text::Sass;
 use strict;
 use warnings;
-use parent qw/Tempa::Base/;
+use parent qw/Tfall::Base/;
 use Text::Sass;
 
 sub render {

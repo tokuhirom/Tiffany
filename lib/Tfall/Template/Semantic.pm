@@ -1,7 +1,7 @@
-package Tempa::Template::Semantic;
+package Tfall::Template::Semantic;
 use strict;
 use warnings;
-use parent qw/Tempa::Base/;
+use parent qw/Tfall::Base/;
 use Template::Semantic;
 use Try::Tiny;
 

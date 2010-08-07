@@ -1,4 +1,4 @@
-package Tempa;
+package Tfall;
 use strict;
 use warnings;
 use 5.00800;
@@ -7,11 +7,11 @@ use Carp;
 use UNIVERSAL::require;
 
 our $MAP = {
-    'tt'    => 'Tempa::TT',
-    'mt'    => 'Tempa::Text::MicroTemplate::File',
-    'sass'  => 'Tempa::Text::Sass',
-    'haml'  => 'Tempa::Text::Haml',
-    'mason' => 'Tempa::Text::MicroMason',
+    'tt'    => 'Tfall::TT',
+    'mt'    => 'Tfall::Text::MicroTemplate::File',
+    'sass'  => 'Tfall::Text::Sass',
+    'haml'  => 'Tfall::Text::Haml',
+    'mason' => 'Tfall::Text::MicroMason',
 };
 my %loaded;
 
@@ -53,41 +53,41 @@ __END__
 
 =head1 NAME
 
-Tempa - Generic interface for Perl5 template engines.
+Tfall - Generic interface for Perl5 template engines.
 
 =head1 SYNOPSIS
 
-    use Tempa;
+    use Tfall;
 
-    my $tmpl = Tempa->new('/path/to/template.tt');
+    my $tmpl = Tfall->new('/path/to/template.tt');
     $tmpl->render({name => 'John'}); # => string
 
 =head1 DESCRIPTION
 
-Tempa is generic interface for Perl5 template engines.
+Tfall is generic interface for Perl5 template engines.
 
 =head1 METHODS
 
 =over 4
 
-=item my $tmpl = Tempa->new($path[, @args]);
+=item my $tmpl = Tfall->new($path[, @args]);
 
-This method is factory method for Tempa::* classes.
+This method is factory method for Tfall::* classes.
 
 Destination class is determined by $path's extension.
-For example, you passed $path as 'foo.tt', then you got instance of Tempa::TT.
+For example, you passed $path as 'foo.tt', then you got instance of Tfall::TT.
 
-=item Tempa->register($ext, $class);
+=item Tfall->register($ext, $class);
 
 This method associates a filename pattern with a specific template implementation. To use TT for files ending in a .foo extension:
 
-    Tempa->register('bar', 'Tempa::TT');
+    Tfall->register('bar', 'Tfall::TT');
 
-=item Tempa->is_registered($ext)
+=item Tfall->is_registered($ext)
 
 You can check the $ext as registered or not.
 
-=item my $klass = Tempa->lookup($ext);
+=item my $klass = Tfall->lookup($ext);
 
 Lookup template engine from $ext.
 
@@ -109,51 +109,51 @@ Get error string for last rendering.
 
 =back
 
-=head1 How to create new tempa engine.
+=head1 How to create new tfall engine.
 
-Tempa's class can use L<Tempa::Base> as abstract base class.
+Tfall's class can use L<Tfall::Base> as abstract base class.
 
-Tempa::Base provides following methods.
+Tfall::Base provides following methods.
 
 =over 4
 
-=item my $tmpl = Tempa::Base->new($stuff, @args);
+=item my $tmpl = Tfall::Base->new($stuff, @args);
 
-Create new instance of tempa engine.
+Create new instance of tfall engine.
 
 $sutff should allows Str for filename and ScalarRef for text.
 
 =item $tmpl->args();
 
-This method returns @args of Tempa::Base->new($stuff, @args).
+This method returns @args of Tfall::Base->new($stuff, @args).
 
-This method is provided for author of Tempa::*.
+This method is provided for author of Tfall::*.
 
 =item $tmpl->stuff();
 
-This method returns $stuff of Tempa::Base->new($stuff, @args).
+This method returns $stuff of Tfall::Base->new($stuff, @args).
 
-This method is provided for author of Tempa::*.
+This method is provided for author of Tfall::*.
 
 =item $tmpl->slurp();
 
 This method reads content from $tmpl->stuff().
 This method makes plain string both ScalarRef and Str.
 
-This method is provided for author of Tempa::*.
+This method is provided for author of Tfall::*.
 
 =back
 
-Then, you can create new template wrapper with L<Tempa::Base>.
+Then, you can create new template wrapper with L<Tfall::Base>.
 
 You should implement only one abstract method named B<render>.
 
 For example, you can write TT bidingigs as following:
 
-    package Tempa::TT;
+    package Tfall::TT;
     use strict;
     use warnings;
-    use parent qw/Tempa::Base/;
+    use parent qw/Tfall::Base/;
     use Template;
 
     sub render {

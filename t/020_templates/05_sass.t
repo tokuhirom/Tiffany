@@ -2,13 +2,13 @@ use strict;
 use warnings;
 use Test::Requires 'Text::Sass';
 use Test::More;
-use Tempa;
-use Tempa::Text::Sass;
+use Tfall;
+use Tfall::Text::Sass;
 
-Tempa->register('sass', 'Tempa::Text::Sass');
+Tfall->register('sass', 'Tfall::Text::Sass');
 
 {
-    my $tmpl = Tempa->new('t/tmpl/foo.sass');
+    my $tmpl = Tfall->new('t/tmpl/foo.sass');
     is $tmpl->render('john'), <<'...';
 body {
   background-color: black;
@@ -17,13 +17,13 @@ body {
 ...
 }
 {
-    my $tmpl = Tempa->new('t/tmpl/unknown.sass');
+    my $tmpl = Tfall->new('t/tmpl/unknown.sass');
     is $tmpl->render('john'), undef;
     ok $tmpl->errstr();
 }
 
 {
-    my $tmpl = Tempa::Text::Sass->new('t/tmpl/foo.sass');
+    my $tmpl = Tfall::Text::Sass->new('t/tmpl/foo.sass');
     is $tmpl->render('john'), <<'...';
 body {
   background-color: black;
@@ -32,7 +32,7 @@ body {
 ...
 }
 {
-    my $tmpl = Tempa::Text::Sass->new(\<<',,,');
+    my $tmpl = Tfall::Text::Sass->new(\<<',,,');
 body
   background-color: black
   color: white

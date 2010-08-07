@@ -1,38 +1,38 @@
 # NAME
 
-Tempa - Generic interface for Perl5 template engines.
+Tfall - Generic interface for Perl5 template engines.
 
 # SYNOPSIS
 
-    use Tempa;
+    use Tfall;
 
-    my $tmpl = Tempa->new('/path/to/template.tt');
+    my $tmpl = Tfall->new('/path/to/template.tt');
     $tmpl->render({name => 'John'}); # => string
 
 # DESCRIPTION
 
-Tempa is generic interface for Perl5 template engines.
+Tfall is generic interface for Perl5 template engines.
 
 # METHODS
 
-- my $tmpl = Tempa->new($path[, @args]);
+- my $tmpl = Tfall->new($path[, @args]);
 
-This method is factory method for Tempa::* classes.
+This method is factory method for Tfall::* classes.
 
 Destination class is determined by $path's extension.
-For example, you passed $path as 'foo.tt', then you got instance of Tempa::TT.
+For example, you passed $path as 'foo.tt', then you got instance of Tfall::TT.
 
-- Tempa->register($ext, $class);
+- Tfall->register($ext, $class);
 
 This method associates a filename pattern with a specific template implementation. To use TT for files ending in a .foo extension:
 
-    Tempa->register('bar', 'Tempa::TT');
+    Tfall->register('bar', 'Tfall::TT');
 
-- Tempa->is_registered($ext)
+- Tfall->is_registered($ext)
 
 You can check the $ext as registered or not.
 
-- my $klass = Tempa->lookup($ext);
+- my $klass = Tfall->lookup($ext);
 
 Lookup template engine from $ext.
 
@@ -48,47 +48,47 @@ If got error, this method returns 'undef'.This method never die if got parse err
 
 Get error string for last rendering.
 
-# How to create new tempa engine.
+# How to create new tfall engine.
 
-Tempa's class can use [Tempa::Base](http://search.cpan.org/perldoc?Tempa::Base) as abstract base class.
+Tfall's class can use [Tfall::Base](http://search.cpan.org/perldoc?Tfall::Base) as abstract base class.
 
-Tempa::Base provides following methods.
+Tfall::Base provides following methods.
 
-- my $tmpl = Tempa::Base->new($stuff, @args);
+- my $tmpl = Tfall::Base->new($stuff, @args);
 
-Create new instance of tempa engine.
+Create new instance of tfall engine.
 
 $sutff should allows Str for filename and ScalarRef for text.
 
 - $tmpl->args();
 
-This method returns @args of Tempa::Base->new($stuff, @args).
+This method returns @args of Tfall::Base->new($stuff, @args).
 
-This method is provided for author of Tempa::*.
+This method is provided for author of Tfall::*.
 
 - $tmpl->stuff();
 
-This method returns $stuff of Tempa::Base->new($stuff, @args).
+This method returns $stuff of Tfall::Base->new($stuff, @args).
 
-This method is provided for author of Tempa::*.
+This method is provided for author of Tfall::*.
 
 - $tmpl->slurp();
 
 This method reads content from $tmpl->stuff().
 This method makes plain string both ScalarRef and Str.
 
-This method is provided for author of Tempa::*.
+This method is provided for author of Tfall::*.
 
-Then, you can create new template wrapper with [Tempa::Base](http://search.cpan.org/perldoc?Tempa::Base).
+Then, you can create new template wrapper with [Tfall::Base](http://search.cpan.org/perldoc?Tfall::Base).
 
 You should implement only one abstract method named __render__.
 
 For example, you can write TT bidingigs as following:
 
-    package Tempa::TT;
+    package Tfall::TT;
     use strict;
     use warnings;
-    use parent qw/Tempa::Base/;
+    use parent qw/Tfall::Base/;
     use Template;
 
     sub render {

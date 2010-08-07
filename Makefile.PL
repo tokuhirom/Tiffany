@@ -1,6 +1,6 @@
 use inc::Module::Install;
-name 'Tempa';
-all_from 'lib/Tempa.pm';
+name 'Tfall';
+all_from 'lib/Tfall.pm';
 
 test_requires 'Test::Requires';
 requires 'parent';
@@ -8,7 +8,7 @@ requires 'Try::Tiny';
 requires 'UNIVERSAL::require';
 requires 'Class::Accessor::Fast';
 
-readme_markdown_from 'lib/Tempa.pm';
+readme_markdown_from 'lib/Tfall.pm';
 tests 't/*.t t/*/*.t t/*/*/*.t t/*/*/*/*.t';
 test_requires 'Test::More';
 test_requires 'YAML';

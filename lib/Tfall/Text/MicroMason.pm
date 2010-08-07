@@ -1,7 +1,7 @@
-package Tempa::Text::MicroMason;
+package Tfall::Text::MicroMason;
 use strict;
 use warnings;
-use parent 'Tempa::Base';
+use parent 'Tfall::Base';
 use Text::MicroMason;
 use Try::Tiny;
 

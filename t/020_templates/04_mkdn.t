@@ -2,27 +2,27 @@ use strict;
 use warnings;
 use Test::Requires 'Text::Markdown';
 use Test::More;
-use Tempa;
-use Tempa::Text::Markdown;
+use Tfall;
+use Tfall::Text::Markdown;
 
-Tempa->register('mkdn', 'Tempa::Text::Markdown');
+Tfall->register('mkdn', 'Tfall::Text::Markdown');
 
 {
-    my $tmpl = Tempa->new('t/tmpl/foo.mkdn');
+    my $tmpl = Tfall->new('t/tmpl/foo.mkdn');
     is $tmpl->render('john'), "<p>Hello, john.</p>\n";
 }
 {
-    my $tmpl = Tempa->new('t/tmpl/unknown.mkdn');
+    my $tmpl = Tfall->new('t/tmpl/unknown.mkdn');
     is $tmpl->render('john'), undef;
     ok $tmpl->errstr();
 }
 
 {
-    my $tmpl = Tempa::Text::Markdown->new('t/tmpl/foo.mkdn');
+    my $tmpl = Tfall::Text::Markdown->new('t/tmpl/foo.mkdn');
     is $tmpl->render('john'), "<p>Hello, john.</p>\n";
 }
 {
-    my $tmpl = Tempa::Text::Markdown->new(\"Hello, john.");
+    my $tmpl = Tfall::Text::Markdown->new(\"Hello, john.");
     is $tmpl->render('john'), "<p>Hello, john.</p>\n";
 }
 

@@ -1,7 +1,7 @@
-package Tempa::Text::Markdown;
+package Tfall::Text::Markdown;
 use strict;
 use warnings;
-use parent qw/Tempa::Base/;
+use parent qw/Tfall::Base/;
 use Text::Markdown;
 
 sub render {

@@ -1,4 +1,4 @@
-package Tempa::Base;
+package Tfall::Base;
 use strict;
 use warnings;
 use parent qw/Class::Accessor::Fast/;
@@ -21,6 +21,6 @@ sub slurp {
     do { local $/; <$fh> };
 }
 
-sub render { die "This is abstract method. Do not use Tempa::Base directly." }
+sub render { die "This is abstract method. Do not use Tfall::Base directly." }
 
 1;

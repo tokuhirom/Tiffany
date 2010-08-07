@@ -2,25 +2,25 @@ use strict;
 use warnings;
 use Test::Requires 'Template';
 use Test::More;
-use Tempa;
+use Tfall;
 
 {
-    my $tmpl = Tempa->new('t/tmpl/foo.tt');
+    my $tmpl = Tfall->new('t/tmpl/foo.tt');
     is $tmpl->render({name => 'john'}), "Hello, john.\n";
 }
 {
-    my $tmpl = Tempa->new('t/tmpl/unknown.tt');
+    my $tmpl = Tfall->new('t/tmpl/unknown.tt');
     is $tmpl->render({name => 'john'}), undef;
     ok $tmpl->errstr();
 }
 
 {
-    my $tmpl = Tempa::TT->new('t/tmpl/foo.tt');
+    my $tmpl = Tfall::TT->new('t/tmpl/foo.tt');
     is $tmpl->render({name => 'john'}), "Hello, john.\n";
 }
 
 {
-    my $tmpl = Tempa::TT->new(\"Hello, [% name %].");
+    my $tmpl = Tfall::TT->new(\"Hello, [% name %].");
     is $tmpl->render({name => 'john'}), "Hello, john.";
 }
 

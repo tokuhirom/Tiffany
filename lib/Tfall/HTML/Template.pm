@@ -1,7 +1,7 @@
-package Tempa::HTML::Template;
+package Tfall::HTML::Template;
 use strict;
 use warnings;
-use parent qw/Tempa::Base/;
+use parent qw/Tfall::Base/;
 use HTML::Template;
 use Try::Tiny;
 

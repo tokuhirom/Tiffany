@@ -1,13 +1,13 @@
 use strict;
 use warnings;
 use Test::More;
-use Tempa;
+use Tfall;
 
-Tempa->register('tt' => 'Tempa::Template');
-Tempa->register('mt' => 'Tempa::Text::MicroTemplate');
+Tfall->register('tt' => 'Tfall::Template');
+Tfall->register('mt' => 'Tfall::Text::MicroTemplate');
 
-ok(Tempa->is_registered('mt'));
-ok(!Tempa->is_registered('pt'));
+ok(Tfall->is_registered('mt'));
+ok(!Tfall->is_registered('pt'));
 
 done_testing;
 

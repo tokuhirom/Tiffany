@@ -1,7 +1,7 @@
-package Tempa::TT;
+package Tfall::TT;
 use strict;
 use warnings;
-use parent qw/Tempa::Base/;
+use parent qw/Tfall::Base/;
 use Template;
 
 sub render {

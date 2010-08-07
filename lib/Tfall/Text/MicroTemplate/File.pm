@@ -1,7 +1,7 @@
-package Tempa::Text::MicroTemplate::File;
+package Tfall::Text::MicroTemplate::File;
 use strict;
 use warnings;
-use parent 'Tempa::Base';
+use parent 'Tfall::Base';
 use Text::MicroTemplate::File;
 use Try::Tiny;
 
