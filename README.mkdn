@@ -50,7 +50,7 @@ Get error string for last rendering.
 
 # How to create new tempa engine.
 
-Tempa's class can use [Tempa::Base](http://search.cpan.org/search?mode=module&query=Tempa::Base) as abstract base class.
+Tempa's class can use [Tempa::Base](http://search.cpan.org/perldoc?Tempa::Base) as abstract base class.
 
 Tempa::Base provides following methods.
 
@@ -79,7 +79,7 @@ This method makes plain string both ScalarRef and Str.
 
 This method is provided for author of Tempa::*.
 
-Then, you can create new template wrapper with [Tempa::Base](http://search.cpan.org/search?mode=module&query=Tempa::Base).
+Then, you can create new template wrapper with [Tempa::Base](http://search.cpan.org/perldoc?Tempa::Base).
 
 You should implement only one abstract method named __render__.
 
@@ -110,7 +110,7 @@ Tokuhiro Matsuno <tokuhirom AAJKLFJEF GMAIL COM>
 
 # SEE ALSO
 
-[Any::Template](http://search.cpan.org/search?mode=module&query=Any::Template), <http://github.com/rtomayko/tilt>
+[Any::Template](http://search.cpan.org/perldoc?Any::Template), <http://github.com/rtomayko/tilt>
 
 # LICENSE
 
