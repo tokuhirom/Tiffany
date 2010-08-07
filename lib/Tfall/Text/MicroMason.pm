@@ -1,23 +1,23 @@
 package Tfall::Text::MicroMason;
 use strict;
 use warnings;
-use parent 'Tfall::Base';
 use Text::MicroMason;
-use Try::Tiny;
+
+sub new {
+    my $class = shift;
+    my $mason = Text::MicroMason->new(@_);
+    bless {
+        mason => $mason,
+    }, $class;
+}
 
 sub render {
-    my ($self, @args) = @_;
+    my ($self, $stuff, @args) = @_;
 
-    try {
-        my $mason = Text::MicroMason->new(@{$self->args});
-        $mason->execute(
-            (ref $self->stuff ? ('text' => ${$self->stuff}) : ('file' => $self->stuff)),
-            @args
-        );
-    } catch {
-        $self->errstr($_);
-        return undef;
-    }
+    $self->{mason}->execute(
+        (ref $stuff ? ('text' => ${$stuff}) : ('file' => $stuff)),
+        @args
+    );
 }
 
 1;

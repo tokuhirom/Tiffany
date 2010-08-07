@@ -1,16 +1,21 @@
 package Tfall::Text::Markdown;
 use strict;
 use warnings;
-use parent qw/Tfall::Base/;
 use Text::Markdown;
+use Tfall::Util qw/slurp/;
+
+sub new {
+    my $class = shift;
+    my $mkdn = Text::Markdown->new(@_);
+    bless {
+        mkdn => $mkdn,
+    }, $class;
+}
 
 sub render {
-    my ($self, @args) = @_;
-    if (defined (my $src = $self->slurp)) {
-        return Text::Markdown->new(@{ $self->args })->markdown($src);
-    } else {
-        return undef;
-    }
+    my ($self, $stuff, @args) = @_;
+    my $src = slurp($stuff);
+    return $self->{mkdn}->markdown($src);
 }
 
 1;

@@ -1,15 +1,22 @@
 package Tfall::TT;
 use strict;
 use warnings;
-use parent qw/Tfall::Base/;
 use Template;
 
-sub render {
-    my ($self, @args) = @_;
+sub new {
+    my $class = shift;
 
-    my $tt = Template->new(@{$self->{args}});
-    $tt->process( $self->{stuff}, @args, \my $out )
-      or do { $self->errstr( $tt->error ); return };
+    my $tt = Template->new(@_);
+    bless {
+        tt => $tt,
+    }, $class;
+}
+
+sub render {
+    my ($self, $stuff, @args) = @_;
+
+    $self->{tt}->process( $stuff, @args, \my $out )
+      or do { $self->errstr( $self->{tt}->error ); return };
     $out;
 }
 

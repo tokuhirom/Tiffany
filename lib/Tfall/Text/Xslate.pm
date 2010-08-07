@@ -1,21 +1,21 @@
 package Tfall::Text::Xslate;
 use strict;
 use warnings;
-use parent qw/Tfall::Base/;
 use Text::Xslate;
-use Try::Tiny;
+
+sub new {
+    my $class = shift;
+
+    my $xslate = Text::Xslate->new(@_);
+    bless {
+        xslate => $xslate,
+    }, $class;
+}
 
 sub render {
     my ($self, @args) = @_;
 
-    my $tt = Text::Xslate->new(@{$self->{args}});
-    my $out;
-    try {
-        my $out = $tt->process( $self->{stuff}, @args );
-    } catch {
-        $self->errstr( $_ );
-    };
-    $out;
+    return $self->{xslate}->render(@args);
 }
 
 1;

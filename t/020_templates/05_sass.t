@@ -17,14 +17,16 @@ body {
 ...
 }
 {
-    my $tmpl = Tfall->new('t/tmpl/unknown.sass');
-    is $tmpl->render('john'), undef;
-    ok $tmpl->errstr();
+    eval {
+        my $tmpl = Tfall->new('t/tmpl/unknown.sass');
+        $tmpl->render('john');
+    };
+    ok $@;
 }
 
 {
-    my $tmpl = Tfall::Text::Sass->new('t/tmpl/foo.sass');
-    is $tmpl->render('john'), <<'...';
+    my $tmpl = Tfall::Text::Sass->new();
+    is $tmpl->render('t/tmpl/foo.sass', 'john'), <<'...';
 body {
   background-color: black;
   color: white;
@@ -32,12 +34,13 @@ body {
 ...
 }
 {
-    my $tmpl = Tfall::Text::Sass->new(\<<',,,');
+    my $tmpl = Tfall::Text::Sass->new();
+    my $stuff = <<',,,';
 body
   background-color: black
   color: white
 ,,,
-    is $tmpl->render('john'), <<'...';
+    is $tmpl->render(\$stuff, 'john'), <<'...';
 body {
   background-color: black;
   color: white;

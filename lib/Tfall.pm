@@ -22,13 +22,24 @@ sub new {
             $loaded{$klass}++ or do {
                 $klass->use or die $@;
             };
-            return $klass->new($path, @args);
+            my $tmpl = $klass->new(@args);
+            return bless { tmpl => $tmpl, path => $path}, $class;
         } else {
             Carp::croak("Cannot detect file type from file name: $path");
         }
     } else {
         Carp::croak("Cannot detect ext. from file name: $path");
     }
+}
+
+sub render {
+    my ($self, @args) = @_;
+    return $self->{tmpl}->render($self->{path}, @args);
+}
+
+sub errstr {
+    my ($self) = @_;
+    $self->{tmpl}->errstr;
 }
 
 sub is_registered {

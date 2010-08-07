@@ -12,18 +12,20 @@ Tfall->register('mt', 'Tfall::Text::MicroTemplate::File');
     is $tmpl->render('john'), "hello, john.\n";
 }
 {
-    my $tmpl = Tfall->new('t/tmpl/unknown.mt');
-    is $tmpl->render('john'), undef;
-    ok $tmpl->errstr();
+    eval {
+        my $tmpl = Tfall->new('t/tmpl/unknown.mt');
+        is $tmpl->render('john'), undef;
+    };
+    ok $@;
 }
 
 {
-    my $tmpl = Tfall::Text::MicroTemplate::File->new('t/tmpl/foo.mt');
-    is $tmpl->render('john'), "hello, john.\n";
+    my $tmpl = Tfall::Text::MicroTemplate::File->new();
+    is $tmpl->render('t/tmpl/foo.mt', 'john'), "hello, john.\n";
 }
 {
-    my $tmpl = Tfall::Text::MicroTemplate::File->new(\'hello, <?= $_[0] ?>.');
-    is $tmpl->render('john'), "hello, john.";
+    my $tmpl = Tfall::Text::MicroTemplate::File->new();
+    is $tmpl->render(\'hello, <?= $_[0] ?>.', 'john'), "hello, john.";
 }
 
 done_testing;

@@ -1,24 +1,26 @@
 package Tfall::Text::MicroTemplate::File;
 use strict;
 use warnings;
-use parent 'Tfall::Base';
 use Text::MicroTemplate::File;
-use Try::Tiny;
+
+sub new {
+    my $class = shift;
+    my $mtf = Text::MicroTemplate::File->new(@_);
+    bless {
+        mtf => $mtf,
+    }, $class;
+}
 
 sub render {
-    my ($self, @args) = @_;
-    my $mtf = Text::MicroTemplate::File->new(@{$self->{args}});
-    try {
-        if (ref $self->stuff) {
-            $mtf->parse(${$self->stuff});
-            $mtf->build()->(@args);
-        } else {
-            $mtf->render_file($self->stuff, @args);
-        }
-    } catch {
-        $self->errstr($_);
-        return undef;
-    };
+    my ($self, $stuff, @args) = @_;
+
+    my $mtf = $self->{mtf};
+    if (ref $stuff) {
+        $mtf->parse(${$stuff});
+        $mtf->build()->(@args);
+    } else {
+        $mtf->render_file($stuff, @args);
+    }
 }
 
 1;

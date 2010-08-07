@@ -12,18 +12,20 @@ Tfall->register('ht', 'Tfall::HTML::Template');
     is $tmpl->render({name => 'john'}), "Hello, john.\n";
 }
 {
-    my $tmpl = Tfall->new('t/tmpl/unknown.ht');
-    is $tmpl->render({name => 'john'}), undef;
-    ok $tmpl->errstr();
+    eval {
+        my $tmpl = Tfall->new('t/tmpl/unknown.ht');
+        is $tmpl->render({name => 'john'}), undef;
+    };
+    ok $@;
 }
 
 {
-    my $tmpl = Tfall::HTML::Template->new('t/tmpl/foo.ht');
-    is $tmpl->render({name => 'john'}), "Hello, john.\n";
+    my $tmpl = Tfall::HTML::Template->new();
+    is $tmpl->render('t/tmpl/foo.ht', {name => 'john'}), "Hello, john.\n";
 }
 {
-    my $tmpl = Tfall::HTML::Template->new(\q{Hello, <TMPL_VAR NAME="name">.});
-    is $tmpl->render({name => 'john'}), "Hello, john.";
+    my $tmpl = Tfall::HTML::Template->new();
+    is $tmpl->render(\q{Hello, <TMPL_VAR NAME="name">.}, {name => 'john'}), "Hello, john.";
 }
 
 done_testing;

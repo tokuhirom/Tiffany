@@ -9,24 +9,26 @@ use Tfall;
     is $tmpl->render(name => 'john'), "Hello, john\n";
 }
 {
-    my $tmpl = Tfall->new('t/tmpl/unknown.mason');
-    is $tmpl->render(name => 'john'), undef;
-    ok $tmpl->errstr();
+    eval {
+        my $tmpl = Tfall->new('t/tmpl/unknown.mason');
+        is $tmpl->render(name => 'john'), undef;
+    };
+    ok $@;
 }
 
 {
-    my $tmpl = Tfall::Text::MicroMason->new('t/tmpl/foo.mason');
-    is $tmpl->render(name => 'john'), "Hello, john\n";
+    my $tmpl = Tfall::Text::MicroMason->new();
+    is $tmpl->render('t/tmpl/foo.mason', name => 'john'), "Hello, john\n";
 }
 {
-    my $tmpl = Tfall::Text::MicroMason->new(\<<'...');
+    my $tmpl = Tfall::Text::MicroMason->new();
+    my $t = \<<'...';
 <%args>
     $name
 </%args>
 Hello, <% $name %>
 ...
-    is $tmpl->render(name => 'john'), "Hello, john\n";
-    diag $tmpl->errstr() if $tmpl->errstr;
+    is $tmpl->render($t, name => 'john'), "Hello, john\n";
 }
 
 done_testing;
