@@ -4,10 +4,10 @@ Tfall - Generic interface for Perl5 template engines.
 
 # SYNOPSIS
 
-    use Tfall::Text::Xslate;
+    use Tfall;
 
-    my $tmpl = Tfall::Text::Xslate->new();
-    $tmpl->render(\'Hello, <: $name :>', {name => 'John'});
+    my $tmpl = Tfall->load('Text::Xslate', {syntax => 'TTerse'});
+    $tmpl->render(\'Hello, [% name %]', {name => 'John'});
     # => "Hello, John"
 
 # DESCRIPTION
@@ -18,13 +18,13 @@ Tfall is generic interface for Perl5 template engines.
 
 The Tfall protocol is based on duck typing.
 
-- my $tfall = Tfall::Thing->new(@args);
+- my $tfall = Tfall::Thing->new($args);
 
 The module SHOULD have __new__ method.
 
 This method creates new instance of Tfall module.
 
-@args should pass to the constructor of template engine.
+$args should pass to the constructor of template engine.
 
 - $tmpl->render($stuff, @args);
 

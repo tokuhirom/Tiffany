@@ -4,6 +4,32 @@ use warnings;
 use 5.00800;
 our $VERSION = '0.01_05';
 
+sub load {
+    my ($class, $klass, @args) = @_;
+    $klass = _load_class($klass, 'Tfall');
+    return $klass->new(@args);
+}
+
+# code taken from Plack::Util::load_class.
+my %loaded;
+sub _load_class {
+    my ( $class, $prefix ) = @_;
+
+    if ($prefix) {
+        unless ( $class =~ s/^\+// || $class =~ /^$prefix/ ) {
+            $class = "$prefix\::$class";
+        }
+    }
+
+    return $class if $loaded{$class}++;
+
+    my $file = $class;
+    $file =~ s!::!/!g;
+    require "$file.pm";    ## no critic
+
+    return $class;
+}
+
 1;
 __END__
 
@@ -15,10 +41,10 @@ Tfall - Generic interface for Perl5 template engines.
 
 =head1 SYNOPSIS
 
-    use Tfall::Text::Xslate;
+    use Tfall;
 
-    my $tmpl = Tfall::Text::Xslate->new();
-    $tmpl->render(\'Hello, <: $name :>', {name => 'John'});
+    my $tmpl = Tfall->load('Text::Xslate', {syntax => 'TTerse'});
+    $tmpl->render(\'Hello, [% name %]', {name => 'John'});
     # => "Hello, John"
 
 =head1 DESCRIPTION

@@ -25,11 +25,12 @@ sub walk () {
     my $caller = caller(0);
     # my $data_section = Data::Section::Simple->new($caller)->get_data_section // die;
     my $router = $caller->router;
-    "Tfall::$view_class"->require;
+    my $tfall = Tfall->load($view_class, @view_opt);
+
     sub {
         my $env = shift;
         my $req = Plack::Request->new($env);
-        my $c = Sinatraish::Context->new(req => $req);
+        my $c = Sinatraish::Context->new(req => $req, tfall => $tfall);
         if ( my $route = $router->match($env) ) {
             $route->{code}->($c);
             # use Data::Dumper; warn Dumper($c->res);
@@ -51,13 +52,16 @@ has res => (
     isa     => 'Plack::Response',
     default => sub { Plack::Response->new(200, ['Content-Type' => 'text/html; charset=utf-8'], 'no content') }
 );
+has tfall => (
+    is => 'ro',
+    isa => 'Object',
+);
 # has data_section => (is => 'ro', isa => 'HashRef');
 
 sub render {
     my ($self, $path, @args) = @_;
 
-    my $tfall = "Tfall::$view_class"->new(@view_opt);
-    my $html = $tfall->render($path, @args);
+    my $html = $self->tfall->render($path, @args);
     $self->res->header('Content-Length' => length($html));
     $self->res->body($html);
 }
