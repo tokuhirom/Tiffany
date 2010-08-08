@@ -6,7 +6,7 @@ $ENV{LANG} = 'C';
 all_pod_files_spelling_ok('lib');
 __DATA__
 Tokuhiro Matsuno
-Tfall
+Tiffany
 tokuhirom
 AAJKLFJEF
 GMAIL
@@ -36,3 +36,5 @@ TT
 foo
 tfall
 tt
+Tiffany
+pm

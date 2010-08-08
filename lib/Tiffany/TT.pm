@@ -1,4 +1,4 @@
-package Tfall::TT;
+package Tiffany::TT;
 use strict;
 use warnings;
 use Template;

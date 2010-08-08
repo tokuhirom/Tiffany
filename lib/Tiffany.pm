@@ -1,4 +1,4 @@
-package Tfall;
+package Tiffany;
 use strict;
 use warnings;
 use 5.00800;
@@ -6,7 +6,7 @@ our $VERSION = '0.01_05';
 
 sub load {
     my ($class, $klass, $args) = @_;
-    $klass = _load_class($klass, 'Tfall');
+    $klass = _load_class($klass, 'Tiffany');
     return $klass->new($args);
 }
 
@@ -37,47 +37,47 @@ __END__
 
 =head1 NAME
 
-Tfall - Generic interface for Perl5 template engines.
+Tiffany - Generic interface for Perl5 template engines.
 
 =head1 SYNOPSIS
 
-    use Tfall;
+    use Tiffany;
 
-    my $tmpl = Tfall->load('Text::Xslate', {syntax => 'TTerse'});
+    my $tmpl = Tiffany->load('Text::Xslate', {syntax => 'TTerse'});
     $tmpl->render(\'Hello, [% name %]', {name => 'John'});
     # => "Hello, John"
 
 =head1 DESCRIPTION
 
-Tfall is generic interface for Perl5 template engines.
+Tiffany is generic interface for Perl5 template engines.
 
 =head1 FACTORY METHOD
 
-Tfall.pm provides factory feature for Tfall::* classes.
+Tiffany.pm provides factory feature for Tiffany::* classes.
 
 =over 4
 
-=item my $tfall = Tfall->load($klass, $args)
+=item my $tfall = Tiffany->load($klass, $args)
 
-Load Tfall::* class and create new instance.
+Load Tiffany::* class and create new instance.
 
-    my $xslate = Tfall->load("Text::Xslate", +{syntax => 'TTerse'});
+    my $xslate = Tiffany->load("Text::Xslate", +{syntax => 'TTerse'});
 
-    my $xslate = Tfall->load("+My::Template::Engine", +{option => 'here'});
+    my $xslate = Tiffany->load("+My::Template::Engine", +{option => 'here'});
 
 =back
 
-=head1 The Tfall Protocol
+=head1 The Tiffany Protocol
 
-The Tfall protocol is based on duck typing.
+The Tiffany protocol is based on duck typing.
 
 =over 4
 
-=item my $tfall = Tfall::Thing->new([$args:HashRef|ArrayRef]);
+=item my $tfall = Tiffany::Thing->new([$args:HashRef|ArrayRef]);
 
 The module SHOULD have B<new> method.
 
-This method creates new instance of Tfall module.
+This method creates new instance of Tiffany module.
 
 $args should pass to the constructor of template engine.
 
@@ -89,7 +89,7 @@ This method rendering template with @args.
 
 If template engine found any errors, this method MUST throw exception.
 
-If the template engine throws any exceptions, Tfall module SHOULD pass through.
+If the template engine throws any exceptions, Tiffany module SHOULD pass through.
 
 B<$stuff> SHOULD allows Str for filename. And the module MAY allows ScalarRef for text.
 

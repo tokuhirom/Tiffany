@@ -2,8 +2,8 @@ use strict;
 use warnings;
 use Test::Requires 'Template::Declare';
 use Test::More;
-use Tfall;
-use Tfall::Template::Declare;
+use Tiffany;
+use Tiffany::Template::Declare;
 
 {
     package MyPage;
@@ -22,14 +22,14 @@ use Tfall::Template::Declare;
 
 {
     eval {
-        my $tmpl = Tfall::Template::Declare->new();
+        my $tmpl = Tiffany::Template::Declare->new();
         $tmpl->render('unknown');
     };
     ok $@;
 }
 
 {
-    my $tmpl = Tfall::Template::Declare->new({dispatch_to => ['MyPage']});
+    my $tmpl = Tiffany::Template::Declare->new({dispatch_to => ['MyPage']});
     like $tmpl->render('simple', 'john'), qr/Hello, john./;
 }
 

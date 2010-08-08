@@ -1,28 +1,40 @@
 # NAME
 
-Tfall - Generic interface for Perl5 template engines.
+Tiffany - Generic interface for Perl5 template engines.
 
 # SYNOPSIS
 
-    use Tfall;
+    use Tiffany;
 
-    my $tmpl = Tfall->load('Text::Xslate', {syntax => 'TTerse'});
+    my $tmpl = Tiffany->load('Text::Xslate', {syntax => 'TTerse'});
     $tmpl->render(\'Hello, [% name %]', {name => 'John'});
     # => "Hello, John"
 
 # DESCRIPTION
 
-Tfall is generic interface for Perl5 template engines.
+Tiffany is generic interface for Perl5 template engines.
 
-# The Tfall Protocol
+# FACTORY METHOD
 
-The Tfall protocol is based on duck typing.
+Tiffany.pm provides factory feature for Tiffany::* classes.
 
-- my $tfall = Tfall::Thing->new([$args:HashRef|ArrayRef]);
+- my $tfall = Tiffany->load($klass, $args)
+
+Load Tiffany::* class and create new instance.
+
+    my $xslate = Tiffany->load("Text::Xslate", +{syntax => 'TTerse'});
+
+    my $xslate = Tiffany->load("+My::Template::Engine", +{option => 'here'});
+
+# The Tiffany Protocol
+
+The Tiffany protocol is based on duck typing.
+
+- my $tfall = Tiffany::Thing->new([$args:HashRef|ArrayRef]);
 
 The module SHOULD have __new__ method.
 
-This method creates new instance of Tfall module.
+This method creates new instance of Tiffany module.
 
 $args should pass to the constructor of template engine.
 
@@ -34,7 +46,7 @@ This method rendering template with @args.
 
 If template engine found any errors, this method MUST throw exception.
 
-If the template engine throws any exceptions, Tfall module SHOULD pass through.
+If the template engine throws any exceptions, Tiffany module SHOULD pass through.
 
 __$stuff__ SHOULD allows Str for filename. And the module MAY allows ScalarRef for text.
 

@@ -1,4 +1,4 @@
-package Tfall::Template::Semantic;
+package Tiffany::Template::Semantic;
 use strict;
 use warnings;
 use Template::Semantic;

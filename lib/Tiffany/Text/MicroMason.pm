@@ -1,4 +1,4 @@
-package Tfall::Text::MicroMason;
+package Tiffany::Text::MicroMason;
 use strict;
 use warnings;
 use Text::MicroMason;

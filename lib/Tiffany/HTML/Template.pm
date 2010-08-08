@@ -1,4 +1,4 @@
-package Tfall::HTML::Template;
+package Tiffany::HTML::Template;
 use strict;
 use warnings;
 use HTML::Template;

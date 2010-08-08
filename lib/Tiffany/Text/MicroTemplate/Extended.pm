@@ -1,4 +1,4 @@
-package Tfall::Text::MicroTemplate::Extended;
+package Tiffany::Text::MicroTemplate::Extended;
 use strict;
 use warnings;
 use Text::MicroTemplate::Extended;

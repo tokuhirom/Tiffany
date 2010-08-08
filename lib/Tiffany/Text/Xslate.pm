@@ -1,4 +1,4 @@
-package Tfall::Text::Xslate;
+package Tiffany::Text::Xslate;
 use strict;
 use warnings;
 use Text::Xslate;

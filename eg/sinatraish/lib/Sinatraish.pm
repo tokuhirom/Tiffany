@@ -6,7 +6,7 @@ use Plack::Request;
 use Plack::Response;
 # use Data::Section::Simple;
 use Router::Simple::Sinatraish;
-use Tfall;
+use Tiffany;
 
 our @EXPORT = qw/walk view_opt/;
 
@@ -25,7 +25,7 @@ sub walk () {
     my $caller = caller(0);
     # my $data_section = Data::Section::Simple->new($caller)->get_data_section // die;
     my $router = $caller->router;
-    my $tfall = Tfall->load($view_class, @view_opt);
+    my $tfall = Tiffany->load($view_class, @view_opt);
 
     sub {
         my $env = shift;
@@ -44,7 +44,7 @@ sub walk () {
 
 package Sinatraish::Context;
 use Mouse;
-use Tfall::TT;
+use Tiffany::TT;
 
 has req => (is => 'ro', isa => 'Plack::Request', required =>1);
 has res => (
