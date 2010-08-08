@@ -99,7 +99,7 @@ This method MUST return plain string. Do not return blessed reference.
 
 =head1 HOW TO USE IT IN MY WEB APPLICATION FRAMEWORK?
 
-Example code is here: eg/sinatraish/.
+Example code is here: eg/sinatraish/ in distribution tar ball or L<http://github.com/tokuhirom/p5-tiffany/tree/master/eg/sinatraish/>.
 
 =head1 AUTHOR
 
