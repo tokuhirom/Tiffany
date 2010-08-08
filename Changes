@@ -1,5 +1,9 @@
 Revision history for Perl extension Tfall
 
+0.01_05
+
+        - HTML::Template can take $ht->param(\%vars).
+
 0.01_04
 
         - any ->render method MUST return plain string
