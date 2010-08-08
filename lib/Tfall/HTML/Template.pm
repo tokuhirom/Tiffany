@@ -14,9 +14,7 @@ sub render {
 
     my $type = ref $stuff ? 'scalarref' : 'filename';
     my $ht = HTML::Template->new($type => $stuff, %$self);
-    while (my ($k, $v) = each %$args) {
-        $ht->param($k => $v);
-    }
+    $ht->param($args);
     return $ht->output();
 }
 
