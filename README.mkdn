@@ -64,6 +64,14 @@ Tokuhiro Matsuno <tokuhirom AAJKLFJEF GMAIL COM>
 
 [Any::Template](http://search.cpan.org/perldoc?Any::Template), <http://github.com/rtomayko/tilt>
 
+# THANKS TO
+
+kazuhooku
+
+gfx
+
+miyagawa
+
 # LICENSE
 
 Copyright (C) Tokuhiro Matsuno

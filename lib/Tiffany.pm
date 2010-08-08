@@ -109,6 +109,14 @@ Tokuhiro Matsuno E<lt>tokuhirom AAJKLFJEF GMAIL COME<gt>
 
 L<Any::Template>, L<http://github.com/rtomayko/tilt>
 
+=head1 THANKS TO
+
+kazuhooku
+
+gfx
+
+miyagawa
+
 =head1 LICENSE
 
 Copyright (C) Tokuhiro Matsuno
