@@ -5,7 +5,8 @@ use Text::MicroMason;
 
 sub new {
     my $class = shift;
-    my $mason = Text::MicroMason->new(@_);
+    my %args = @_ == 1 ? %{ $_[0] } : @_;
+    my $mason = Text::MicroMason->new(%args);
     bless {
         mason => $mason,
     }, $class;

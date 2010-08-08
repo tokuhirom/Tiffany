@@ -31,13 +31,13 @@ The Tfall protocol is based on duck typing.
 
 =over 4
 
-=item my $tfall = Tfall::Thing->new(@args);
+=item my $tfall = Tfall::Thing->new($args);
 
 The module SHOULD have B<new> method.
 
 This method creates new instance of Tfall module.
 
-@args should pass to the constructor of template engine.
+$args should pass to the constructor of template engine.
 
 =item $tmpl->render($stuff, @args);
 

@@ -7,7 +7,8 @@ sub new {
     my $class = shift;
     # T::D throws exception when strict => 1.
     # This is required for Tfall spec.
-    Template::Declare->init( strict => 1, @_ );
+    my %args = @_ == 1 ? %{ $_[0] } : @_;
+    Template::Declare->init( strict => 1, %args );
     bless { }, $class;
 }
 

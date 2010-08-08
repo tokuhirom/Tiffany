@@ -5,7 +5,8 @@ use Text::MicroTemplate::Extended;
 
 sub new {
     my $class = shift;
-    my $mtf = Text::MicroTemplate::Extended->new(@_);
+    my %args = @_ == 1 ? %{ $_[0] } : @_;
+    my $mtf = Text::MicroTemplate::Extended->new(%args);
     bless {
         mtf => $mtf,
     }, $class;

@@ -5,8 +5,8 @@ use Template;
 
 sub new {
     my $class = shift;
-
-    my $tt = Template->new(@_);
+    my %args = @_ == 1 ? %{ $_[0] } : @_;
+    my $tt = Template->new(%args);
     bless {
         tt => $tt,
     }, $class;

@@ -5,8 +5,9 @@ use Text::Xslate;
 
 sub new {
     my $class = shift;
+    my %args = @_ == 1 ? %{ $_[0] } : @_;
 
-    my $xslate = Text::Xslate->new(@_);
+    my $xslate = Text::Xslate->new(%args);
     bless {
         xslate => $xslate,
     }, $class;
