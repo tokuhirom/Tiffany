@@ -51,6 +51,22 @@ Tfall - Generic interface for Perl5 template engines.
 
 Tfall is generic interface for Perl5 template engines.
 
+=head1 FACTORY METHOD
+
+Tfall.pm provides factory feature for Tfall::* classes.
+
+=over 4
+
+=item my $tfall = Tfall->load($klass, $args)
+
+Load Tfall::* class and create new instance.
+
+    my $xslate = Tfall->load("Text::Xslate", +{syntax => 'TTerse'});
+
+    my $xslate = Tfall->load("+My::Template::Engine", +{option => 'here'});
+
+=back
+
 =head1 The Tfall Protocol
 
 The Tfall protocol is based on duck typing.
