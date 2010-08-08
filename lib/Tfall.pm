@@ -5,9 +5,9 @@ use 5.00800;
 our $VERSION = '0.01_05';
 
 sub load {
-    my ($class, $klass, @args) = @_;
+    my ($class, $klass, $args) = @_;
     $klass = _load_class($klass, 'Tfall');
-    return $klass->new(@args);
+    return $klass->new($args);
 }
 
 # code taken from Plack::Util::load_class.
@@ -57,7 +57,7 @@ The Tfall protocol is based on duck typing.
 
 =over 4
 
-=item my $tfall = Tfall::Thing->new($args);
+=item my $tfall = Tfall::Thing->new([$args:HashRef|ArrayRef]);
 
 The module SHOULD have B<new> method.
 
@@ -65,7 +65,7 @@ This method creates new instance of Tfall module.
 
 $args should pass to the constructor of template engine.
 
-=item $tmpl->render($stuff, @args);
+=item $tmpl->render($stuff:Scalar|ScalarRef [, @args]);
 
 The module SHOULD have B<render> method.
 

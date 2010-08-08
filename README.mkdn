@@ -18,7 +18,7 @@ Tfall is generic interface for Perl5 template engines.
 
 The Tfall protocol is based on duck typing.
 
-- my $tfall = Tfall::Thing->new($args);
+- my $tfall = Tfall::Thing->new([$args:HashRef|ArrayRef]);
 
 The module SHOULD have __new__ method.
 
@@ -26,7 +26,7 @@ This method creates new instance of Tfall module.
 
 $args should pass to the constructor of template engine.
 
-- $tmpl->render($stuff, @args);
+- $tmpl->render($stuff:Scalar|ScalarRef [, @args]);
 
 The module SHOULD have __render__ method.
 

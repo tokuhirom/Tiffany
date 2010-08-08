@@ -4,10 +4,10 @@ use warnings;
 use Text::Xslate;
 
 sub new {
-    my $class = shift;
-    my %args = @_ == 1 ? %{ $_[0] } : @_;
+    my ($class, $args) = @_;
+    $args ||= +{};
 
-    my $xslate = Text::Xslate->new(%args);
+    my $xslate = Text::Xslate->new($args);
     bless {
         xslate => $xslate,
     }, $class;

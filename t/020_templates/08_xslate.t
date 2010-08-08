@@ -14,7 +14,7 @@ use Tfall::Text::Xslate;
     is $tmpl->render(\'Hello, <: $name :>.', {name => 'john'}), "Hello, john.";
 }
 {
-    my $tmpl = Tfall::Text::Xslate->new(syntax => 'TTerse');
+    my $tmpl = Tfall::Text::Xslate->new({syntax => 'TTerse'});
     is $tmpl->render(\'Hello, [% name %].', {name => 'john'}), "Hello, john.";
 }
 {

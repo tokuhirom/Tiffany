@@ -4,9 +4,9 @@ use warnings;
 use Template;
 
 sub new {
-    my $class = shift;
-    my %args = @_ == 1 ? %{ $_[0] } : @_;
-    my $tt = Template->new(%args);
+    my ($class, $args) = @_;
+    $args ||= +{};
+    my $tt = Template->new(%$args);
     bless {
         tt => $tt,
     }, $class;

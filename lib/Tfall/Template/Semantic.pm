@@ -4,9 +4,9 @@ use warnings;
 use Template::Semantic;
 
 sub new {
-    my $class = shift;
-    my %args = @_ == 1 ? %{ $_[0] } : @_;
-    my $ts = Template::Semantic->new(%args);
+    my ($class, $args) = @_;
+    $args ||= +{};
+    my $ts = Template::Semantic->new(%$args);
     bless {
         ts => $ts,
     }, $class;

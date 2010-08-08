@@ -4,9 +4,9 @@ use warnings;
 use Text::MicroTemplate::Extended;
 
 sub new {
-    my $class = shift;
-    my %args = @_ == 1 ? %{ $_[0] } : @_;
-    my $mtf = Text::MicroTemplate::Extended->new(%args);
+    my ($class, $args) = @_;
+    $args ||= +{};
+    my $mtf = Text::MicroTemplate::Extended->new(%$args);
     bless {
         mtf => $mtf,
     }, $class;

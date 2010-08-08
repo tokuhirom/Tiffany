@@ -15,7 +15,7 @@ use Scalar::Util qw/blessed/;
 }
 
 {
-    my $tmpl = Tfall::Text::MicroTemplate::Extended->new(include_path => ['t/tmpl']);
+    my $tmpl = Tfall::Text::MicroTemplate::Extended->new({include_path => ['t/tmpl']});
     my $out = $tmpl->render('foo', 'john');
     is $out, "hello, john.\n";
     ok !blessed($out);

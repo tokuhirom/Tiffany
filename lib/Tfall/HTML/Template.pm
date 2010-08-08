@@ -4,9 +4,9 @@ use warnings;
 use HTML::Template;
 
 sub new {
-    my $class = shift;
-    my %args = @_ == 1 ? %{$_[0]} : @_;
-    bless {%args}, $class;
+    my ($class, $args) = @_;
+    $args ||= +{};
+    bless {%$args}, $class;
 }
 
 sub render {

@@ -29,7 +29,7 @@ use Tfall::Template::Declare;
 }
 
 {
-    my $tmpl = Tfall::Template::Declare->new(dispatch_to => ['MyPage']);
+    my $tmpl = Tfall::Template::Declare->new({dispatch_to => ['MyPage']});
     like $tmpl->render('simple', 'john'), qr/Hello, john./;
 }
 

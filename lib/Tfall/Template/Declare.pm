@@ -4,11 +4,11 @@ use warnings;
 use Template::Declare;
 
 sub new {
-    my $class = shift;
+    my ($class, $args) = @_;
+    $args ||= +{};
     # T::D throws exception when strict => 1.
     # This is required for Tfall spec.
-    my %args = @_ == 1 ? %{ $_[0] } : @_;
-    Template::Declare->init( strict => 1, %args );
+    Template::Declare->init( strict => 1, %$args );
     bless { }, $class;
 }
 
