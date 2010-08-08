@@ -1,5 +1,12 @@
 Revision history for Perl extension Tiffany
 
+0.01_06
+
+        - doc tweaks
+        - rename Tfall to Tiffany(suggested by miyagawa++)
+        - Tfall::*->new methods should take only one reference value.
+        - added brand new factory method
+
 0.01_05
 
         - HTML::Template can take $ht->param(\%vars).
