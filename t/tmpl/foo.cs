@@ -1,1 +1,1 @@
-Hello, <?cs var:name ?>.
+Hello, <?cs var:user_name ?>.
