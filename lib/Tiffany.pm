@@ -49,17 +49,17 @@ Tiffany - Generic interface for Perl5 template engines.
 
 =head1 DESCRIPTION
 
-Tiffany is generic interface for Perl5 template engines.
+Tiffany is a generic interface for Perl5 template engines.
 
 =head1 FACTORY METHOD
 
-Tiffany.pm provides factory feature for Tiffany::* classes.
+Tiffany.pm acts as a factory for Tiffany::* classes, which in turn are the actual adaptor classes for each template engine.
 
 =over 4
 
-=item my $tfall = Tiffany->load($klass, $args)
+=item my $tiffany = Tiffany->load($klass, $args)
 
-Load Tiffany::* class and create new instance.
+Load Tiffany::* class if necessary, and create new instance of using the given arguments.
 
     my $xslate = Tiffany->load("Text::Xslate", +{syntax => 'TTerse'});
 
@@ -69,31 +69,33 @@ Load Tiffany::* class and create new instance.
 
 =head1 The Tiffany Protocol
 
-The Tiffany protocol is based on duck typing.
+The Tiffany protocol is based on duck typing. A template adaptor does not need to inherit from a particular class, but its API needs to adhere to the spec provided here.
+
+In the documentation that follows, C<Tiffany::Thing> represents an adaptor class.
 
 =over 4
 
-=item my $tfall = Tiffany::Thing->new([$args:HashRef|ArrayRef]);
+=item my $tiffanny = Tiffany::Thing->new([$args:HashRef|ArrayRef]);
 
-The module SHOULD have B<new> method.
+The module SHOULD have a B<new> method.
 
-This method creates new instance of Tiffany module.
+This method creates a new instance of Tiffany module.
 
-$args should pass to the constructor of template engine.
+$args should be passed to the constructor of the template engine.
 
-=item $tmpl->render($stuff:Scalar|ScalarRef [, @args]);
+=item my $result = $tmpl->render($stuff:Scalar|ScalarRef [, @args]);
 
-The module SHOULD have B<render> method.
+The module SHOULD have a B<render> method.
 
-This method rendering template with @args.
+This method should invoke the appropriate rendering method for the underlying template engine, using @args.
 
-If template engine found any errors, this method MUST throw exception.
+If the template engine found any errors, this method MUST throw an exception.
 
-If the template engine throws any exceptions, Tiffany module SHOULD pass through.
+If the template engine throws any exceptions, Tiffany module SHOULD pass through the exception unaltered.
 
-B<$stuff> SHOULD allows Str for filename. And the module MAY allows ScalarRef for text.
+B<$stuff> SHOULD expect a Scalar that represents the template filename. The module MAY allow a ScalarRef that holds the actual template code.
 
-This method MUST return plain string. Do not return blessed reference.
+This method MUST return plain string. Do not return a blessed reference.
 
 =back
 
