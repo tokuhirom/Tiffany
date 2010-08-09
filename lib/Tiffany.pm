@@ -2,7 +2,7 @@ package Tiffany;
 use strict;
 use warnings;
 use 5.00800;
-our $VERSION = '0.01_06';
+our $VERSION = '0.01_07';
 
 sub load {
     my ($class, $klass, $args) = @_;

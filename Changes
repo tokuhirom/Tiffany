@@ -1,5 +1,10 @@
 Revision history for Perl extension Tiffany
 
+0.01_07
+
+        - english fix(lestrrat++)
+        - added documents for each child modules.
+
 0.01_06
 
         - doc tweaks
