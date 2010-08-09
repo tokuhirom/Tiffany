@@ -1,5 +1,9 @@
 Revision history for Perl extension Tiffany
 
+0.01_08
+
+        - added Text::ClearSilver support(gfx++)
+
 0.01_07
 
         - english fix(lestrrat++)
