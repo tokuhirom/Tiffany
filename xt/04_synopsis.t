@@ -14,10 +14,28 @@ for my $file (@files) {
     }
 
     my $option = join(";", @option);
-    my $test   = qq(package Test::Synopsis::Sandbox$i; use Test::More; #line $line "$file"\n$option; ok 1, "$file"; $code; done_testing;);
+    my $test   = <<"TEST";
+package
+    Test::Synopsis::Sandbox$i;
+use Test::More;
+#line $line "$file"
+$option;
+ok 1, "$file";
+$code;
+done_testing;
+TEST
+
     subtest $file => sub {
         eval($test);
-        fail($@) if $@;
+        if($@) {
+            if($@ =~ /Can't locate/) { # ' for poor editors
+                pass "skipped: $@";
+            }
+            else {
+                fail($@);
+            }
+            done_testing;
+        }
     };
     $i++;
 }
