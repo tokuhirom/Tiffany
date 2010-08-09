@@ -41,3 +41,7 @@ pm
 gfx
 kazuhooku
 miyagawa
+Goro
+API
+adaptor
+filename
