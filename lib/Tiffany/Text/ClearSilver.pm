@@ -33,7 +33,7 @@ Tiffany::Text::ClearSilver - Tiffany gateway for Text::ClearSilver
     use Tiffany;
 
     my $tiffany = Tiffany->load('Text::ClearSilver', {load_path => ['/path/to/template']});
-    my $output = $tiffany->render(\q{hello, <?cs var:name ?>.}, {name => 'john'});
+    my $output = $tiffany->render(\q{hello, <?cs var:user_name ?>.}, {user_name => 'john'});
     my $expected = "hello, john.";
 
     is $output, $expected;
