@@ -18,11 +18,31 @@ sub render {
     my $mtf = $self->{mtf};
     if (ref $stuff) {
         $mtf->parse(${$stuff});
-        $mtf->build()->(@args)->as_string;
+        return $mtf->build()->(@args)->as_string;
     } else {
-        $mtf->render_file($stuff, @args)->as_string;
+        return $mtf->render_file($stuff, @args)->as_string;
     }
 }
 
 1;
+__END__
+
+=head1 NAME
+
+Tiffany::Text::MicroTemplate::File - Tiffany gateway for Text::MicroTemplate::File
+
+=head1 SYNOPSIS
+
+    use Tiffany;
+
+    my $tiffany = Tiffany->load('Text::MicroTemplate::File');
+    my $output = $tiffany->render(\q{hello, <?= $_[0] ?>.}, 'john');
+    my $expected = "hello, john.";
+
+    is $output, $expected;
+
+=head1 AUTHOR
+
+Tokuhiro Matsuno
+
 

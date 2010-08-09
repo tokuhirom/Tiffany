@@ -21,3 +21,20 @@ sub render {
 }
 
 1;
+__END__
+
+=head1 NAME
+
+Tiffany::TT - Tiffany gateway for Template-Toolkit
+
+=head1 SYNOPSIS
+
+    use Tiffany;
+
+    my $tmpl = Tiffany->load('TT');
+    is $tmpl->render(\q{Hello, [% name %].}, {name => 'john'}), "Hello, john.";
+
+=head1 AUTHOR
+
+Tokuhiro Matsuno
+

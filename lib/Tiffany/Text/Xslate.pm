@@ -24,3 +24,25 @@ sub render {
 }
 
 1;
+__END__
+
+=head1 NAME
+
+Tiffany::Text::Xslate - Tiffany gateway for Text::Xslate
+
+=head1 SYNOPSIS
+
+    use Tiffany;
+
+    my $tiffany = Tiffany->load('Text::Xslate', {syntax => 'TTerse'});
+    my $output = $tiffany->render(\q{hello, [% name %].}, {name => 'john'});
+    my $expected = "hello, john.";
+
+    is $output, $expected;
+
+
+=head1 AUTHOR
+
+Tokuhiro Matsuno
+
+

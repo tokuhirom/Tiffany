@@ -19,3 +19,20 @@ sub render {
 }
 
 1;
+__END__
+
+=head1 NAME
+
+Tiffany::HTML::Template - Tiffany gateway for HTML::Template
+
+=head1 SYNOPSIS
+
+    use Tiffany;
+
+    my $tmpl = Tiffany->load('HTML::Template');
+    is $tmpl->render(\q{Hello, <TMPL_VAR NAME="name">.}, {name => 'john'}), "Hello, john.";
+
+=head1 AUTHOR
+
+Tokuhiro Matsuno
+
