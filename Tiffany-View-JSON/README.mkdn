@@ -1,0 +1,24 @@
+# NAME
+
+Tiffany::View::JSON -
+
+# SYNOPSIS
+
+  use Tiffany::View::JSON;
+
+# DESCRIPTION
+
+Tiffany::View::JSON is
+
+# AUTHOR
+
+Tokuhiro Matsuno <tokuhirom AAJKLFJEF GMAIL COM>
+
+# SEE ALSO
+
+# LICENSE
+
+Copyright (C) Tokuhiro Matsuno
+
+This library is free software; you can redistribute it and/or modify
+it under the same terms as Perl itself.
