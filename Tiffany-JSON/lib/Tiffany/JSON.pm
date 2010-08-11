@@ -1,4 +1,4 @@
-package Tiffany::View::JSON;
+package Tiffany::JSON;
 use strict;
 use warnings;
 use 5.00800;
@@ -13,15 +13,15 @@ __END__
 
 =head1 NAME
 
-Tiffany::View::JSON -
+Tiffany::JSON -
 
 =head1 SYNOPSIS
 
-  use Tiffany::View::JSON;
+  use Tiffany::JSON;
 
 =head1 DESCRIPTION
 
-Tiffany::View::JSON is
+Tiffany::JSON is
 
 =head1 AUTHOR
 

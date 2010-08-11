@@ -1,11 +1,11 @@
 use inc::Module::Install;
-name 'Tiffany-View-JSON';
-all_from 'lib/Tiffany/View/JSON.pm';
+name 'Tiffany-JSON';
+all_from 'lib/Tiffany/JSON.pm';
 
 # requires '';
 
 
-readme_markdown_from 'lib/Tiffany/View/JSON.pm';
+readme_markdown_from 'lib/Tiffany/JSON.pm';
 tests 't/*.t t/*/*.t t/*/*/*.t t/*/*/*/*.t';
 test_requires 'Test::More';
 test_requires 'YAML';

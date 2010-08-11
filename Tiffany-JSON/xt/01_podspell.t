@@ -6,7 +6,7 @@ $ENV{LANG} = 'C';
 all_pod_files_spelling_ok('lib');
 __DATA__
 Tokuhiro Matsuno
-Tiffany::View::JSON
+Tiffany::JSON
 tokuhirom
 AAJKLFJEF
 GMAIL

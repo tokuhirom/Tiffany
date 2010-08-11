@@ -1,14 +1,14 @@
 # NAME
 
-Tiffany::View::JSON -
+Tiffany::JSON -
 
 # SYNOPSIS
 
-  use Tiffany::View::JSON;
+  use Tiffany::JSON;
 
 # DESCRIPTION
 
-Tiffany::View::JSON is
+Tiffany::JSON is
 
 # AUTHOR
 
