@@ -2,8 +2,9 @@ use inc::Module::Install;
 name 'Tiffany-JSON';
 all_from 'lib/Tiffany/JSON.pm';
 
-# requires '';
-
+requires 'Tiffany';
+requires 'JSON' => 2;
+requires 'Test::More' => 0.88;
 
 readme_markdown_from 'lib/Tiffany/JSON.pm';
 tests 't/*.t t/*/*.t t/*/*/*.t t/*/*/*/*.t';
