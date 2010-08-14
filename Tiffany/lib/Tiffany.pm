@@ -103,6 +103,18 @@ This method MUST return plain string. Do not return a blessed reference.
 
 Example code is here: eg/sinatraish/ in distribution tar ball or L<http://github.com/tokuhirom/p5-tiffany/tree/master/eg/sinatraish/>.
 
+=head1 FAQ
+
+=over 4
+
+=item Is Tiffany supports JSON?
+
+Tiffany should not support JSON. Tiffany protocol can support JSON serialize.
+But real web application needs more things like Content-Type.
+It is not supported area for Tiffany.
+
+=back
+
 =head1 AUTHOR
 
 Tokuhiro Matsuno E<lt>tokuhirom AAJKLFJEF GMAIL COME<gt>
