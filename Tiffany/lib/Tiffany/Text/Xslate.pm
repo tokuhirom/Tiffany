@@ -1,7 +1,7 @@
 package Tiffany::Text::Xslate;
 use strict;
 use warnings;
-use Text::Xslate;
+use Text::Xslate 0.1056;
 
 sub new {
     my ($class, $args) = @_;
