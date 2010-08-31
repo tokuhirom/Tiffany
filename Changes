@@ -1,5 +1,9 @@
 Revision history for Perl extension Tiffany
 
+0.02
+
+        - first beta release.
+
 0.01_08
 
         - added Text::ClearSilver support(gfx++)

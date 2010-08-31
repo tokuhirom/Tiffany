@@ -14,6 +14,8 @@ Tiffany - Generic interface for Perl5 template engines.
 
 Tiffany is a generic interface for Perl5 template engines.
 
+__THIS MODULE IS IN ITS BETA QUALITY. THE API IS STOLEN FROM TILT BUT MAY CHANGE IN THE FUTURE__.
+
 # FACTORY METHOD
 
 Tiffany.pm acts as a factory for Tiffany::* classes, which in turn are the actual adaptor classes for each template engine.
@@ -57,6 +59,14 @@ This method MUST return plain string. Do not return a blessed reference.
 # HOW TO USE IT IN MY WEB APPLICATION FRAMEWORK?
 
 Example code is here: eg/sinatraish/ in distribution tar ball or <http://github.com/tokuhirom/p5-tiffany/tree/master/eg/sinatraish/>.
+
+# FAQ
+
+- Is Tiffany supports JSON?
+
+Tiffany should not support JSON. Tiffany protocol can support JSON serialize.
+But real web application needs more things like Content-Type.
+It is not supported area for Tiffany.
 
 # AUTHOR
 

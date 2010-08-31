@@ -2,7 +2,7 @@ package Tiffany;
 use strict;
 use warnings;
 use 5.00800;
-our $VERSION = '0.01_08';
+our $VERSION = '0.02';
 
 sub load {
     my ($class, $klass, $args) = @_;
@@ -50,6 +50,8 @@ Tiffany - Generic interface for Perl5 template engines.
 =head1 DESCRIPTION
 
 Tiffany is a generic interface for Perl5 template engines.
+
+B<THIS MODULE IS IN ITS BETA QUALITY. THE API IS STOLEN FROM TILT BUT MAY CHANGE IN THE FUTURE>.
 
 =head1 FACTORY METHOD
 
