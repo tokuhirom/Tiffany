@@ -1,5 +1,10 @@
 Revision history for Perl extension Tiffany
 
+0.03
+
+        - fixed test case
+          ( no feature changes )
+
 0.02
 
         - first beta release.
