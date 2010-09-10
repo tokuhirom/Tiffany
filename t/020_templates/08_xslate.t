@@ -1,6 +1,8 @@
 use strict;
 use warnings;
-use Test::Requires 'Text::Xslate';
+use Test::Requires {
+    'Text::Xslate' => 0.1056,
+};
 use Test::More;
 use Tiffany::Text::Xslate;
 
