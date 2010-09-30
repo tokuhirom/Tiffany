@@ -45,3 +45,5 @@ API
 Goro
 adaptor
 filename
+FAQ
+JSON
