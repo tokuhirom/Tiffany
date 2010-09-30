@@ -4,7 +4,7 @@ use warnings;
 use parent qw/Exporter/;
 use Plack::Request;
 use Plack::Response;
-use Router::Simple::Sinatraish;
+use Router::Simple::Sinatraish ();
 use Tiffany;
 
 our @EXPORT = qw/walk view_opt/;
