@@ -4,7 +4,6 @@ use warnings;
 use parent qw/Exporter/;
 use Plack::Request;
 use Plack::Response;
-# use Data::Section::Simple;
 use Router::Simple::Sinatraish;
 use Tiffany;
 
@@ -23,7 +22,6 @@ sub view_opt {
 
 sub walk () {
     my $caller = caller(0);
-    # my $data_section = Data::Section::Simple->new($caller)->get_data_section // die;
     my $router = $caller->router;
     my $tiffany = Tiffany->load($view_class, @view_opt);
 
@@ -33,7 +31,6 @@ sub walk () {
         my $c = Sinatraish::Context->new(req => $req, tiffany => $tiffany);
         if ( my $route = $router->match($env) ) {
             $route->{code}->($c);
-            # use Data::Dumper; warn Dumper($c->res);
             return $c->res->finalize;
         }
         else {
@@ -55,7 +52,6 @@ has tiffany => (
     is => 'ro',
     isa => 'Object',
 );
-# has data_section => (is => 'ro', isa => 'HashRef');
 
 sub render {
     my ($self, $path, @args) = @_;
