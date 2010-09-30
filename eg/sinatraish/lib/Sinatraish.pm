@@ -44,7 +44,6 @@ sub walk () {
 
 package Sinatraish::Context;
 use Mouse;
-use Tiffany::TT;
 
 has req => (is => 'ro', isa => 'Plack::Request', required =>1);
 has res => (
