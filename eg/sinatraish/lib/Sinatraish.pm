@@ -25,12 +25,12 @@ sub walk () {
     my $caller = caller(0);
     # my $data_section = Data::Section::Simple->new($caller)->get_data_section // die;
     my $router = $caller->router;
-    my $tfall = Tiffany->load($view_class, @view_opt);
+    my $tiffany = Tiffany->load($view_class, @view_opt);
 
     sub {
         my $env = shift;
         my $req = Plack::Request->new($env);
-        my $c = Sinatraish::Context->new(req => $req, tfall => $tfall);
+        my $c = Sinatraish::Context->new(req => $req, tiffany => $tiffany);
         if ( my $route = $router->match($env) ) {
             $route->{code}->($c);
             # use Data::Dumper; warn Dumper($c->res);
@@ -52,7 +52,7 @@ has res => (
     isa     => 'Plack::Response',
     default => sub { Plack::Response->new(200, ['Content-Type' => 'text/html; charset=utf-8'], 'no content') }
 );
-has tfall => (
+has tiffany => (
     is => 'ro',
     isa => 'Object',
 );
@@ -61,7 +61,7 @@ has tfall => (
 sub render {
     my ($self, $path, @args) = @_;
 
-    my $html = $self->tfall->render($path, @args);
+    my $html = $self->tiffany->render($path, @args);
     $self->res->header('Content-Length' => length($html));
     $self->res->body($html);
 }
