@@ -1,8 +1,12 @@
 use strict;
 use warnings;
-use Test::Requires 'HTML::Template::Pro';
+use Test::Requires {
+    'HTML::Template::Pro' => 0.9504
+};
 use Test::More;
 use Tiffany;
+
+diag "HTML::Template::Pro: $HTML::Template::Pro::VERSION";
 
 SKIP: {
     local $TODO = 'I cannot find how to detect parsing error';
