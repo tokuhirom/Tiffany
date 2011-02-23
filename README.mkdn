@@ -58,7 +58,7 @@ This method MUST return plain string. Do not return a blessed reference.
 
 # HOW TO USE IT IN MY WEB APPLICATION FRAMEWORK?
 
-Example code is here: eg/sinatraish/ in distribution tar ball or <http://github.com/tokuhirom/p5-tiffany/tree/master/eg/sinatraish/>.
+Example code is here: eg/sinatraish/ in distribution tar ball or [http://github.com/tokuhirom/p5-tiffany/tree/master/eg/sinatraish/](http://github.com/tokuhirom/p5-tiffany/tree/master/eg/sinatraish/).
 
 # FAQ
 
@@ -74,7 +74,7 @@ Tokuhiro Matsuno <tokuhirom AAJKLFJEF GMAIL COM>
 
 # SEE ALSO
 
-[Any::Template](http://search.cpan.org/perldoc?Any::Template), <http://github.com/rtomayko/tilt>
+[Any::Template](http://search.cpan.org/perldoc?Any::Template), [http://github.com/rtomayko/tilt](http://github.com/rtomayko/tilt)
 
 # THANKS TO
 
