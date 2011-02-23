@@ -1,9 +1,13 @@
 use strict;
 use warnings;
-use Test::Requires 'Template::Declare';
+use Test::Requires {
+    'Template::Declare' => 0.44
+};
 use Test::More;
 use Tiffany;
 use Tiffany::Template::Declare;
+
+diag "Template::Declare: $Template::Declare::VERSION";
 
 {
     package MyPage;
