@@ -6,7 +6,6 @@ test_requires 'Test::Requires';
 
 no_index directory => 'eg';
 
-readme_markdown_from 'lib/Tiffany.pm';
 tests 't/*.t t/*/*.t t/*/*/*.t t/*/*/*/*.t';
 test_requires 'Test::More';
 test_requires 'YAML';
