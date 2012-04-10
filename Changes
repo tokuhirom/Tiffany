@@ -1,5 +1,9 @@
 Revision history for Perl extension Tiffany
 
+0.06
+
+    - require Test::Requires
+
 0.05
 
     - modernize package
