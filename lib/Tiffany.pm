@@ -2,7 +2,7 @@ package Tiffany;
 use strict;
 use warnings;
 use 5.00800;
-our $VERSION = '1.00';
+our $VERSION = '1.01';
 
 sub load {
     my ($class, $klass, $args) = @_;
@@ -57,7 +57,7 @@ Tiffany.pm acts as a factory for Tiffany::* classes, which in turn are the actua
 
 =over 4
 
-=item my $tiffany = Tiffany->load($klass, $args)
+=item C<< my $tiffany = Tiffany->load($klass, $args) >>
 
 Load Tiffany::* class if necessary, and create new instance of using the given arguments.
 
@@ -75,7 +75,7 @@ In the documentation that follows, C<Tiffany::Thing> represents an adaptor class
 
 =over 4
 
-=item my $tiffanny = Tiffany::Thing->new([$args:HashRef|ArrayRef]);
+=item C<< my $tiffanny = Tiffany::Thing->new([$args:HashRef|ArrayRef]); >>
 
 The module SHOULD have a B<new> method.
 
@@ -83,7 +83,7 @@ This method creates a new instance of Tiffany module.
 
 $args should be passed to the constructor of the template engine.
 
-=item my $result = $tmpl->render($stuff:Scalar|ScalarRef [, @args]);
+=item C<< my $result = $tmpl->render($stuff:Scalar|ScalarRef [, @args]); >>
 
 The module SHOULD have a B<render> method.
 

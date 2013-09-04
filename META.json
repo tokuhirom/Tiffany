@@ -42,7 +42,7 @@
       },
       "runtime" : {
          "requires" : {
-            "perl" : "5.00800"
+            "perl" : "5.008001"
          }
       },
       "test" : {
@@ -64,7 +64,7 @@
          "web" : "https://github.com/tokuhirom/Tiffany"
       }
    },
-   "version" : "1.00",
+   "version" : "1.01",
    "x_contributors" : [
       "lestrrat <lestrrat+github@gmail.com>",
       "gfx <gfuji@cpan.org>",

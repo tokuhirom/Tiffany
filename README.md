@@ -18,7 +18,7 @@ Tiffany is a generic interface for Perl5 template engines.
 
 Tiffany.pm acts as a factory for Tiffany::\* classes, which in turn are the actual adaptor classes for each template engine.
 
-- my $tiffany = Tiffany->load($klass, $args)
+- `my $tiffany = Tiffany->load($klass, $args)`
 
     Load Tiffany::\* class if necessary, and create new instance of using the given arguments.
 
@@ -32,7 +32,7 @@ The Tiffany protocol is based on duck typing. A template adaptor does not need t
 
 In the documentation that follows, `Tiffany::Thing` represents an adaptor class.
 
-- my $tiffanny = Tiffany::Thing->new(\[$args:HashRef|ArrayRef\]);
+- `my $tiffanny = Tiffany::Thing->new([$args:HashRef|ArrayRef]);`
 
     The module SHOULD have a __new__ method.
 
@@ -40,7 +40,7 @@ In the documentation that follows, `Tiffany::Thing` represents an adaptor class.
 
     $args should be passed to the constructor of the template engine.
 
-- my $result = $tmpl->render($stuff:Scalar|ScalarRef \[, @args\]);
+- `my $result = $tmpl->render($stuff:Scalar|ScalarRef [, @args]);`
 
     The module SHOULD have a __render__ method.
 
