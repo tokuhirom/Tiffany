@@ -1,4 +1,4 @@
-Revision history for Perl extension Tiffany
+Revision history for Perl module Tiffany
 
 {{$NEXT}}
 
@@ -6,78 +6,76 @@ Revision history for Perl extension Tiffany
 
     - minil migrate
 
-1.00
+1.00 2012-09-30
 
     - bump up version.
 
-0.08
+0.08 2012-04-15
 
     - oops
 
-0.07
+0.07 2012-04-15
 
     - fixed deps
 
-0.06
+0.06 2012-04-09
 
     - require Test::Requires
 
-0.05
+0.05 2012-04-08
 
     - modernize package
 
-0.04
+0.04 2011-02-22
 
 
-        - fixed testing issue
-          ( no feature changes )
+    - fixed testing issue
+      ( no feature changes )
 
-0.03
+0.03 2010-09-09
 
-        - fixed test case
-          ( no feature changes )
+    - fixed test case
+      ( no feature changes )
 
-0.02
+0.02 2010-08-31
 
-        - first beta release.
+    - first beta release.
 
-0.01_08
+0.01_08 2010-08-09
 
-        - added Text::ClearSilver support(gfx++)
+    - added Text::ClearSilver support(gfx++)
 
-0.01_07
+0.01_07 2010-08-08
 
-        - english fix(lestrrat++)
-        - added documents for each child modules.
+    - english fix(lestrrat++)
+    - added documents for each child modules.
 
-0.01_06
+0.01_06 2010-08-08
 
-        - doc tweaks
-        - rename Tfall to Tiffany(suggested by miyagawa++)
-        - Tfall::*->new methods should take only one reference value.
-        - added brand new factory method
+    - doc tweaks
+    - rename Tfall to Tiffany(suggested by miyagawa++)
+    - Tfall::*->new methods should take only one reference value.
+    - added brand new factory method
 
-0.01_05
+0.01_05 not released
 
-        - HTML::Template can take $ht->param(\%vars).
+    - HTML::Template can take $ht->param(\%vars).
 
-0.01_04
+0.01_04 not released
 
-        - any ->render method MUST return plain string
+    - any ->render method MUST return plain string
 
-0.01_03
+0.01_03 not released
 
-        - support Text::MicroTemplate::Extended
+    - support Text::MicroTemplate::Extended
 
-0.01_02
+0.01_02 not released
 
-        - support T::D(suggested by @c9s)
-        - remove Markdown support
-        - remove Sass support
+    - support T::D(suggested by @c9s)
+    - remove Markdown support
+    - remove Sass support
 
-0.01_01
+0.01_01 not released
 
-        - first developer release.
+    - first developer release.
 
-0.01    Wed Mar 24 22:16:13 2010
-        - original version
